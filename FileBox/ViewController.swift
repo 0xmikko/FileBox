@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate,  UIDocumentPickerDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -20,14 +20,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
+//        // Show statistics such as fps and timing information
+//        sceneView.showsStatistics = true
+//
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+       
+                sceneView.automaticallyUpdatesLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +33,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -47,8 +46,102 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
+    // MARK: - UIDocumentPickerDelegate Methods
+
+    func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
+        if controller.documentPickerMode == UIDocumentPickerMode.import {
+            // What should be the line below?
+            
+            print(url.path!)
+        }
+    }
+    
     // MARK: - ARSCNViewDelegate
     
+    
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
+         documentPicker.delegate = self
+        documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(documentPicker, animated: true, completion: nil)
+        
+        if let touch = touches.first {
+            let touchLocation = touch.location(in: sceneView)
+            
+            let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingGeometry)
+            
+            
+            guard let result = results.first else {return}
+            print(result)
+                
+            
+             let boxScene = SCNScene(named: "art.scnassets/mug.scn")!
+
+
+            //
+            //        let cube = SCNBox.init(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+            //
+                    let material = SCNMaterial()
+                    material.diffuse.contents = UIImage(named: "art.scnassets/wood.jpg")
+            //
+            //        cube.materials = [material]
+            //
+            //        let node = SCNNode()
+            //
+            //        node.position = SCNVector3(0.1, 0.1, -0.2)
+            //        node.geometry = cube
+            //
+            //        sceneView.scene.rootNode.addChildNode(node)
+            //        sceneView.automaticallyUpdatesLighting = true
+
+                    print("Q-Q")
+                    // Set the scene to the view
+                    let boxNode = boxScene.rootNode.childNode(withName: "cooffe_mug", recursively: true)
+
+                    boxNode?.geometry?.materials = [material]
+
+
+                boxNode?.position = SCNVector3(result.worldTransform.columns.3.x, Float(0), result.worldTransform.columns.3.z)
+                    sceneView.scene.rootNode.addChildNode(boxNode!  )
+            }
+            
+        }
+    }
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if anchor is ARPlaneAnchor {
+            print("Plane detected")
+            let planeAncor = anchor as! ARPlaneAnchor
+            let plane = SCNPlane(width: CGFloat(planeAncor.extent.x), height: CGFloat(planeAncor.extent.z))
+            
+            let material = SCNMaterial()
+                    material.diffuse.contents = UIImage(named: "art.scnassets/wood.jpg")
+            plane.materials = [material]
+            
+            let planeNode = SCNNode()
+            planeNode.position = SCNVector3(planeAncor.center.x, 0, planeAncor.center.z)
+            
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+            
+            planeNode.geometry = plane
+             
+            
+            
+            node.addChildNode(planeNode)
+            
+            
+            
+            print(planeAncor.center)
+        }
+        
+        
+        
+    }
 /*
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
@@ -58,18 +151,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 */
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
-}
+
+
