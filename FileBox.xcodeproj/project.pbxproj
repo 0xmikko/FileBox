@@ -15,6 +15,7 @@
 		743FCF1424BE168C00705E13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743FCF1224BE168C00705E13 /* LaunchScreen.storyboard */; };
 		743FCF1F24BE168C00705E13 /* FileBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743FCF1E24BE168C00705E13 /* FileBoxTests.swift */; };
 		743FCF2A24BE168C00705E13 /* FileBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743FCF2924BE168C00705E13 /* FileBoxUITests.swift */; };
+		74AB087124CF683E00457CA9 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74AB087024CF683E00457CA9 /* BradBunR.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		743FCF2524BE168C00705E13 /* FileBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		743FCF2924BE168C00705E13 /* FileBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBoxUITests.swift; sourceTree = "<group>"; };
 		743FCF2B24BE168C00705E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74AB087024CF683E00457CA9 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BradBunR.ttf; path = "../../../Downloads/brady_bunch-1/BradBunR.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				743FCF1D24BE168C00705E13 /* FileBoxTests */,
 				743FCF2824BE168C00705E13 /* FileBoxUITests */,
 				743FCF0524BE168B00705E13 /* Products */,
+				74AB086F24CF682300457CA9 /* Fonts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +129,14 @@
 				743FCF2B24BE168C00705E13 /* Info.plist */,
 			);
 			path = FileBoxUITests;
+			sourceTree = "<group>";
+		};
+		74AB086F24CF682300457CA9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				74AB087024CF683E00457CA9 /* BradBunR.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +246,7 @@
 				743FCF0A24BE168B00705E13 /* art.scnassets in Resources */,
 				743FCF1424BE168C00705E13 /* LaunchScreen.storyboard in Resources */,
 				743FCF1124BE168C00705E13 /* Assets.xcassets in Resources */,
+				74AB087124CF683E00457CA9 /* BradBunR.ttf in Resources */,
 				743FCF0F24BE168B00705E13 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

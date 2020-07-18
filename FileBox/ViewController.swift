@@ -13,6 +13,13 @@ import UIKit
 class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
+    @IBAction func onButtonPeressed(_ sender: Any) {
+        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
+        documentPicker.delegate = self
+        documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,22 +66,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
     // MARK: - ARSCNViewDelegate
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
-//         documentPicker.delegate = self
-//        documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-//        self.present(documentPicker, animated: true, completion: nil)
 //
         if let touch = touches.first {
-            let touchLocation = touch.location(in: sceneView)
+            let screenSize: CGRect = UIScreen.main.bounds
             
+            let touchLocation = touch.location(in: sceneView)
+            print(touchLocation, screenSize)
             let results = sceneView.hitTest(touchLocation, types: .featurePoint)
             
-            print("HLOO", results)
             guard let result = results.first else { return }
-            print(result)
             
-             let boxScene = SCNScene(named: "art.scnassets/box.scn")!
-            
+            let boxScene = SCNScene(named: "art.scnassets/box.scn")!
             
 //            let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
             
@@ -83,7 +85,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
             //
 //            cube.materials = [material]
             
-            let node =  boxScene.rootNode.childNode(withName: "Box", recursively: true)!
+            let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
             
             node.position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
 //            node.geometry = cube
@@ -93,7 +95,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
             
             print("Q-Q")
             // Set the scene to the view
-                    
             
 //                    boxNode?.geometry?.materials = [material]
             
@@ -134,3 +135,5 @@ func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: AR
      return node
  }
  */
+
+extension ViewController {}
