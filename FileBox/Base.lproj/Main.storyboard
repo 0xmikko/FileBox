@@ -23,39 +23,51 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4m-K3-a7G">
-                                <rect key="frame" x="344" y="771.5" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ifX-aC-FYW"/>
-                                    <constraint firstAttribute="width" constant="50" id="mVi-LF-QTQ"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="hand.raised.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="onButtonPeressed:" destination="BV1-FR-VrT" eventType="primaryActionTriggered" id="JaQ-JI-J9W"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press to take document →" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXi-tN-sdC">
-                                <rect key="frame" x="87" y="783.5" width="237" height="27"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SCORE: 0001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0o-kg-8x0">
                                 <rect key="frame" x="61" y="44" width="229" height="60"/>
                                 <fontDescription key="fontDescription" name="BradyBunchRemastered" family="Brady Bunch Remastered" pointSize="51"/>
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzq-N9-BPC">
+                                <rect key="frame" x="0.0" y="776" width="414" height="120"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18" translatesAutoresizingMaskIntoConstraints="NO" id="qRD-4K-vyx">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pF-Gq-wie">
+                                        <rect key="frame" x="68.5" y="20" width="277" height="63"/>
+                                        <fontDescription key="fontDescription" name="BradyBunchRemastered" family="Brady Bunch Remastered" pointSize="43"/>
+                                        <size key="titleShadowOffset" width="6" height="2"/>
+                                        <state key="normal" title="Tap to select file">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onButtonPeressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="aU5-yK-1Ea"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qRD-4K-vyx" secondAttribute="bottom" id="AIW-mb-4aL"/>
+                                    <constraint firstAttribute="trailing" secondItem="qRD-4K-vyx" secondAttribute="trailing" id="Mtg-cp-aTC"/>
+                                    <constraint firstItem="qRD-4K-vyx" firstAttribute="top" secondItem="Vzq-N9-BPC" secondAttribute="top" id="Na9-LR-IBf"/>
+                                    <constraint firstItem="qRD-4K-vyx" firstAttribute="leading" secondItem="Vzq-N9-BPC" secondAttribute="leading" id="OI6-ll-zig"/>
+                                    <constraint firstAttribute="height" constant="120" id="Ohx-Xd-OZ6"/>
+                                    <constraint firstItem="7pF-Gq-wie" firstAttribute="top" secondItem="Vzq-N9-BPC" secondAttribute="top" constant="20" id="azx-St-eGg"/>
+                                    <constraint firstItem="7pF-Gq-wie" firstAttribute="centerX" secondItem="Vzq-N9-BPC" secondAttribute="centerX" id="oWI-cD-Irh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="u4m-K3-a7G" firstAttribute="centerY" secondItem="UXi-tN-sdC" secondAttribute="centerY" id="9ig-Ww-kcW"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
+                            <constraint firstItem="Vzq-N9-BPC" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leading" id="Ivi-Hw-Q3H"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
-                            <constraint firstItem="u4m-K3-a7G" firstAttribute="leading" secondItem="UXi-tN-sdC" secondAttribute="trailing" constant="20" id="WCm-2e-1C4"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="u4m-K3-a7G" secondAttribute="trailing" constant="20" id="bTd-4M-aRk"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="u4m-K3-a7G" secondAttribute="bottom" constant="40" id="kLj-Cu-s9V"/>
+                            <constraint firstAttribute="bottom" secondItem="Vzq-N9-BPC" secondAttribute="bottom" id="lJK-G6-eR3"/>
+                            <constraint firstItem="Vzq-N9-BPC" firstAttribute="trailing" secondItem="U0K-SW-4ec" secondAttribute="trailing" id="mBw-iN-qN9"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
                             <constraint firstItem="R0o-kg-8x0" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="20" id="s1D-cL-XYe"/>
                             <constraint firstItem="R0o-kg-8x0" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="uiZ-h5-gvT"/>
@@ -63,6 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <connections>
+                        <outlet property="mainButton" destination="7pF-Gq-wie" id="TEC-dI-mrR"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                     </connections>
                 </viewController>
@@ -72,6 +85,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hand.raised.fill" catalog="system" width="128" height="128"/>
+        <image name="18" width="2500" height="1666.5"/>
     </resources>
 </document>

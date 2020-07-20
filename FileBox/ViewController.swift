@@ -12,12 +12,16 @@ import UIKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate {
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var mainButton: UIButton!
+    var readyForLaunch: Bool = false
     
     @IBAction func onButtonPeressed(_ sender: Any) {
         let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         present(documentPicker, animated: true, completion: nil)
+        mainButton.isEnabled = false
+        readyForLaunch = true
     }
     
     override func viewDidLoad() {
@@ -26,13 +30,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
         // Set the view's delegate
         sceneView.delegate = self
         sceneView.debugOptions = [.showFeaturePoints]
-        
-//        // Show statistics such as fps and timing information
-//        sceneView.showsStatistics = true
-//
-        // Create a new scene
-        
         sceneView.automaticallyUpdatesLighting = true
+        
+        // Configure main button
+        mainButton.setTitle("Tap to place for launch", for: .disabled)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,40 +67,31 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
     // MARK: - ARSCNViewDelegate
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-        if let touch = touches.first {
-            let screenSize: CGRect = UIScreen.main.bounds
-            
-            let touchLocation = touch.location(in: sceneView)
-            print(touchLocation, screenSize)
-            let results = sceneView.hitTest(touchLocation, types: .featurePoint)
-            
-            guard let result = results.first else { return }
-            
-            let boxScene = SCNScene(named: "art.scnassets/box.scn")!
-            
-//            let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-            
-            let material = SCNMaterial()
-            material.diffuse.contents = UIImage(named: "art.scnassets/box.tga")
-            //
-//            cube.materials = [material]
-            
-            let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
-            
-            node.position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
-//            node.geometry = cube
-            
-            sceneView.scene.rootNode.addChildNode(node)
-            sceneView.automaticallyUpdatesLighting = true
-            
-            print("Q-Q")
-            // Set the scene to the view
-            
-//                    boxNode?.geometry?.materials = [material]
-            
-//                boxNode?.position = SCNVector3(result.worldTransform.columns.3.x, Float(0), result.worldTransform.columns.3.z)
-//                    sceneView.scene.rootNode.addChildNode(boxNode!  )
+        if readyForLaunch {
+            if let touch = touches.first {
+                let screenSize: CGRect = UIScreen.main.bounds
+                
+                let touchLocation = touch.location(in: sceneView)
+                print(touchLocation, screenSize)
+                let results = sceneView.hitTest(touchLocation, types: .featurePoint)
+                
+                guard let result = results.first else { return }
+                
+                let boxScene = SCNScene(named: "art.scnassets/box.scn")!
+                
+                let material = SCNMaterial()
+                material.diffuse.contents = UIImage(named: "art.scnassets/box.tga")
+                
+                let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
+                
+                node.position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
+                
+                sceneView.scene.rootNode.addChildNode(node)
+                sceneView.automaticallyUpdatesLighting = true
+                
+                mainButton.isEnabled = true
+                readyForLaunch = false
+            }
         }
     }
 }
@@ -126,14 +118,5 @@ func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: AR
         print(planeAncor.center)
     }
 }
-
-/*
- // Override to create and configure nodes for anchors added to the view's session.
- func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
- 
-     return node
- }
- */
 
 extension ViewController {}
