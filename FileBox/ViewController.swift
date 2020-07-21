@@ -13,7 +13,9 @@ import UIKit
 class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var mainButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     var readyForLaunch: Bool = false
+    var score : Int = 1
     
     @IBAction func onButtonPeressed(_ sender: Any) {
         let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
@@ -91,6 +93,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
                 
                 mainButton.isEnabled = true
                 readyForLaunch = false
+                score += 1
+                scoreLabel.text = "SCORE: \(score)"
             }
         }
     }
