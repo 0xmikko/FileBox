@@ -13,9 +13,11 @@ import UIKit
 class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var mainButton: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var filesNearby: UILabel!
+    
     var readyForLaunch: Bool = false
-    var score : Int = 1
+    var score: Int = 1
     
     @IBAction func onButtonPeressed(_ sender: Any) {
         let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
@@ -78,49 +80,80 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
                 let results = sceneView.hitTest(touchLocation, types: .featurePoint)
                 
                 guard let result = results.first else { return }
-                
-                let boxScene = SCNScene(named: "art.scnassets/box.scn")!
-                
-                let material = SCNMaterial()
-                material.diffuse.contents = UIImage(named: "art.scnassets/box.tga")
-                
-                let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
-                
-                node.position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
-                
-                sceneView.scene.rootNode.addChildNode(node)
-                sceneView.automaticallyUpdatesLighting = true
+                let position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
+                addBoxToScene(position: position)
                 
                 mainButton.isEnabled = true
                 readyForLaunch = false
                 score += 1
-                scoreLabel.text = "SCORE: \(score)"
+                updateScore(newScore: score)
             }
+        
+        } else {
+            if let touch = touches.first {
+            let screenSize: CGRect = UIScreen.main.bounds
+            
+            let touchLocation = touch.location(in: sceneView)
+            print(touchLocation, screenSize)
+                let results = sceneView.hitTest(touchLocation, options: [SCNHitTestOption.searchMode : 1])
+                
+                for result in results.filter( { $0.node.name != nil }) {
+                    print(result.node.name ?? "HUI")
+                if result.node.name == "Your node name" {
+                    // do manipulations
+                }
+                }
+            
+            print(results)
+        }
         }
     }
-}
-
-func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-    if anchor is ARPlaneAnchor {
-        print("Plane detected")
-        let planeAncor = anchor as! ARPlaneAnchor
-        let plane = SCNPlane(width: CGFloat(planeAncor.extent.x), height: CGFloat(planeAncor.extent.z))
+    
+    func addBoxToScene(position: SCNVector3) {
+        let boxScene = SCNScene(named: "art.scnassets/box.scn")!
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "art.scnassets/wood.jpg")
-        plane.materials = [material]
+        material.diffuse.contents = UIImage(named: "art.scnassets/box.tga")
         
-        let planeNode = SCNNode()
-        planeNode.position = SCNVector3(planeAncor.center.x, 0, planeAncor.center.z)
+        let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
         
-        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+        node.name = "Box\(score)"
+        node.position = position
         
-        planeNode.geometry = plane
-        
-        node.addChildNode(planeNode)
-        
-        print(planeAncor.center)
+        sceneView.scene.rootNode.addChildNode(node)
     }
+    
+    func updateScore(newScore: Int) {
+        let scoreString = String(format: "%04d", newScore)
+        scoreLabel.text = "SCORE: \(scoreString)"
+    }
+    
+    func updateFilesNearby(withNewValue value: Int) {
+        filesNearby.text = String(format: "%04d", value)
+    }
+    
+//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+//        if anchor is ARPlaneAnchor {
+//            print("Plane detected")
+//            let planeAncor = anchor as! ARPlaneAnchor
+//            let plane = SCNPlane(width: CGFloat(planeAncor.extent.x), height: CGFloat(planeAncor.extent.z))
+//
+//            let material = SCNMaterial()
+//            material.diffuse.contents = UIImage(named: "art.scnassets/wood.jpg")
+//            plane.materials = [material]
+//
+//            let planeNode = SCNNode()
+//            planeNode.position = SCNVector3(planeAncor.center.x, 0, planeAncor.center.z)
+//
+//            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+//
+//            planeNode.geometry = plane
+//
+//            node.addChildNode(planeNode)
+//
+//            print(planeAncor.center)
+//        }
+//    }
 }
 
 extension ViewController {}

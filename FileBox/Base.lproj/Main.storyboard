@@ -96,6 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <connections>
+                        <outlet property="filesNearby" destination="HdM-Uz-yWt" id="lj4-AH-y1d"/>
                         <outlet property="mainButton" destination="7pF-Gq-wie" id="TEC-dI-mrR"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                         <outlet property="scoreLabel" destination="R0o-kg-8x0" id="HHg-GN-y1d"/>
