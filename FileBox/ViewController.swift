@@ -88,24 +88,24 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDeleg
                 score += 1
                 updateScore(newScore: score)
             }
-        
+            
         } else {
             if let touch = touches.first {
-            let screenSize: CGRect = UIScreen.main.bounds
-            
-            let touchLocation = touch.location(in: sceneView)
-            print(touchLocation, screenSize)
-                let results = sceneView.hitTest(touchLocation, options: [SCNHitTestOption.searchMode : 1])
+                let screenSize: CGRect = UIScreen.main.bounds
                 
-                for result in results.filter( { $0.node.name != nil }) {
+                let touchLocation = touch.location(in: sceneView)
+                print(touchLocation, screenSize)
+                let results = sceneView.hitTest(touchLocation, options: [SCNHitTestOption.searchMode: 1])
+                
+                for result in results.filter({ $0.node.name != nil }) {
                     print(result.node.name ?? "HUI")
-                if result.node.name == "Your node name" {
-                    // do manipulations
+                    if result.node.name == "Your node name" {
+                        // do manipulations
+                    }
                 }
-                }
-            
-            print(results)
-        }
+                
+                print(results)
+            }
         }
     }
     
