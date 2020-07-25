@@ -1,5 +1,5 @@
 //
-//  ipfsService.swift
+//  LocationService.swift
 //  FileBox
 //
 //  Created by Mikhail Lazarev on 24.07.2020.
@@ -9,12 +9,9 @@
 import Foundation
 import Alamofire
 
-class IPFSService {
-    func getFile(id : String) {
-        
-    }
-    
-    func saveFile(url: String) {
-        
+
+class LocationService {
+    func getAvaibleBoxes(lat: Float, lng: Float) -> [Box] {
+        return [Box]()
     }
 }
