@@ -10,12 +10,14 @@ import ARKit
 import SceneKit
 import UIKit
 
-class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate {
+class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate, BoxViewModelDelegate {
     // Control elements
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var mainButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var filesNearby: UILabel!
+    
+    var boxViewModel : BoxViewModel!
     
     var readyForLaunch: Bool = false
     var score: Int = 1
@@ -31,6 +33,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Adding BoxViewModel
+        boxViewModel = BoxViewModel()
+        boxViewModel.delegate = self
         
         // Set the view's delegate
         sceneView.delegate = self

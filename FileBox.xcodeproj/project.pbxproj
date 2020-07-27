@@ -18,10 +18,13 @@
 		743FCF1424BE168C00705E13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743FCF1224BE168C00705E13 /* LaunchScreen.storyboard */; };
 		743FCF1F24BE168C00705E13 /* FileBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743FCF1E24BE168C00705E13 /* FileBoxTests.swift */; };
 		743FCF2A24BE168C00705E13 /* FileBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743FCF2924BE168C00705E13 /* FileBoxUITests.swift */; };
+		746597C024D0A06400FAE7FA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746597BF24D0A06400FAE7FA /* Configuration.swift */; };
+		746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746597C124D0B09C00FAE7FA /* BoxViewModel.swift */; };
 		7496E4FB24D028FE00DFFE28 /* BoxContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E4FA24D028FE00DFFE28 /* BoxContentsViewController.swift */; };
 		7496E50124D02BAE00DFFE28 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50024D02BAE00DFFE28 /* Box.swift */; };
 		7496E50324D02C4F00DFFE28 /* IPFSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50224D02C4F00DFFE28 /* IPFSService.swift */; };
 		7496E50524D02F2000DFFE28 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50424D02F2000DFFE28 /* LocationService.swift */; };
+		74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A6A63524D038A30019947B /* UploadBoxResponse.swift */; };
 		74AB087124CF683E00457CA9 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74AB087024CF683E00457CA9 /* BradBunR.ttf */; };
 /* End PBXBuildFile section */
 
@@ -62,10 +65,13 @@
 		743FCF2524BE168C00705E13 /* FileBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		743FCF2924BE168C00705E13 /* FileBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBoxUITests.swift; sourceTree = "<group>"; };
 		743FCF2B24BE168C00705E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		746597BF24D0A06400FAE7FA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		746597C124D0B09C00FAE7FA /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
 		7496E4FA24D028FE00DFFE28 /* BoxContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxContentsViewController.swift; sourceTree = "<group>"; };
 		7496E50024D02BAE00DFFE28 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		7496E50224D02C4F00DFFE28 /* IPFSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPFSService.swift; sourceTree = "<group>"; };
 		7496E50424D02F2000DFFE28 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		74A6A63524D038A30019947B /* UploadBoxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadBoxResponse.swift; sourceTree = "<group>"; };
 		74AB087024CF683E00457CA9 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BradBunR.ttf; path = "../../../Downloads/brady_bunch-1/BradBunR.ttf"; sourceTree = "<group>"; };
 		963F969359792BE27AC6A9B7 /* Pods_FileBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7BD70D164952B59570E761 /* Pods-FileBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBox.release.xcconfig"; path = "Target Support Files/Pods-FileBox/Pods-FileBox.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,10 +144,12 @@
 			isa = PBXGroup;
 			children = (
 				743FCF0724BE168B00705E13 /* AppDelegate.swift */,
+				746597BF24D0A06400FAE7FA /* Configuration.swift */,
 				7496E4FD24D02B5300DFFE28 /* Controllers */,
 				7496E4FE24D02B5C00DFFE28 /* ViewModels */,
 				7496E4FC24D02B4700DFFE28 /* Models */,
 				7496E4FF24D02B7000DFFE28 /* Services */,
+				74A6A63424D038760019947B /* Payloads */,
 				743FCF0924BE168B00705E13 /* art.scnassets */,
 				743FCF0D24BE168B00705E13 /* Main.storyboard */,
 				743FCF1024BE168C00705E13 /* Assets.xcassets */,
@@ -189,6 +197,7 @@
 		7496E4FE24D02B5C00DFFE28 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				746597C124D0B09C00FAE7FA /* BoxViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -200,6 +209,14 @@
 				7496E50424D02F2000DFFE28 /* LocationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		74A6A63424D038760019947B /* Payloads */ = {
+			isa = PBXGroup;
+			children = (
+				74A6A63524D038A30019947B /* UploadBoxResponse.swift */,
+			);
+			path = Payloads;
 			sourceTree = "<group>";
 		};
 		74AB086F24CF682300457CA9 /* Fonts */ = {
@@ -464,10 +481,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */,
 				7496E50324D02C4F00DFFE28 /* IPFSService.swift in Sources */,
+				74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */,
 				743FCF0C24BE168B00705E13 /* ARViewController.swift in Sources */,
 				7496E50124D02BAE00DFFE28 /* Box.swift in Sources */,
 				743FCF0824BE168B00705E13 /* AppDelegate.swift in Sources */,
+				746597C024D0A06400FAE7FA /* Configuration.swift in Sources */,
 				7496E50524D02F2000DFFE28 /* LocationService.swift in Sources */,
 				7496E4FB24D028FE00DFFE28 /* BoxContentsViewController.swift in Sources */,
 			);

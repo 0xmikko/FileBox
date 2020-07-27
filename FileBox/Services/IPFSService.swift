@@ -6,15 +6,25 @@
 //  Copyright © 2020 Mikhail Lazarev. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class IPFSService {
-    func getFile(id : String) {
+    
+    init() {
         
     }
-    
+    func getFile(id: String) {}
+
     func saveFile(url: String) {
-        
+        let data = Data("data".utf8)
+
+        AF.upload(data, to: getFullURL(url: "/api/boxes/"))
+            .responseDecodable(of: IPFSUploadResponse.self) { response in
+                debugPrint(response)
+            }
+            .uploadProgress { progress in
+                print("Upload Progress: \(progress.fractionCompleted)")
+            }
     }
 }
