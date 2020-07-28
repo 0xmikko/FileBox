@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 
 
+
+
 class LocationService {
     func getAvaibleBoxes(lat: Float, lng: Float) -> [Box] {
         return [Box]()

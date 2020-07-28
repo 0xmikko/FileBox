@@ -9,6 +9,11 @@
 import Alamofire
 import Foundation
 
+
+protocol IPFSServiceDelegate {
+    func updateBoxes(boxes: [Box])
+}
+
 class IPFSService {
     init() {}
 
@@ -17,8 +22,6 @@ class IPFSService {
     func saveFile(url: URL) {
         let data = try! Data(contentsOf: url)
         print("DATA", data)
-
-//        let data = Data("data".utf8)
 
         AF.upload(multipartFormData: {
             multipartFormData in

@@ -10,32 +10,19 @@ import ARKit
 import SceneKit
 import UIKit
 
-class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDelegate, BoxViewModelDelegate {
+class ARViewController: UIViewController, ARSCNViewDelegate, BoxViewModelDelegate {
+    
     // Control elements
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var mainButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var filesNearby: UILabel!
     
-    var boxViewModel : BoxViewModel!
-    
-    var readyForLaunch: Bool = false
-    var score: Int = 1
-    
-    @IBAction func onTakeFileButtonPeressed(_ sender: Any) {
-        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
-        documentPicker.delegate = self
-        documentPicker.modalPresentationStyle = UIModalPresentationStyle.formSheet
-        present(documentPicker, animated: true) {
-            self.mainButton.isEnabled = false
-            self.readyForLaunch = true
-        }
-        
-    }
+    var boxViewModel: BoxViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Adding BoxViewModel
         boxViewModel = BoxViewModel()
         boxViewModel.delegate = self
@@ -67,42 +54,36 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
         sceneView.session.pause()
     }
     
-    // MARK: - UIDocumentPickerDelegate Methods
+    // MARK: - Interface
     
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-
-        print("URL: \(url.lastPathComponent)")
-        boxViewModel.uploadFile(url: url)
+    func updateScore(newScore: Int) {
+        let scoreString = String(format: "%04d", newScore)
+        scoreLabel.text = "SCORE: \(scoreString)"
     }
     
+    func updateFilesNearby(withNewValue value: Int) {
+        filesNearby.text = String(format: "%04d", value)
+    }
+    
+    func updateButtonState(state: Bool) {
+        mainButton.isEnabled = state
+    }
     
     // MARK: - ARSCNViewDelegate
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if readyForLaunch {
-            if let touch = touches.first {
-                let screenSize: CGRect = UIScreen.main.bounds
-                
-                let touchLocation = touch.location(in: sceneView)
-                print(touchLocation, screenSize)
+        if let touch = touches.first {
+            let touchLocation = touch.location(in: sceneView)
+            
+            if boxViewModel.readyForLaunch {
                 let results = sceneView.hitTest(touchLocation, types: .featurePoint)
                 
                 guard let result = results.first else { return }
                 let position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
-                addBoxToScene(position: position)
                 
-                mainButton.isEnabled = true
-                readyForLaunch = false
-                score += 1
-                updateScore(newScore: score)
-            }
-            
-        } else {
-            if let touch = touches.first {
-                let screenSize: CGRect = UIScreen.main.bounds
+                boxViewModel.dropFileTouch(position: position)
                 
-                let touchLocation = touch.location(in: sceneView)
-                print(touchLocation, screenSize)
+            } else {
                 let results = sceneView.hitTest(touchLocation, options: [SCNHitTestOption.searchMode: 1])
                 
                 for result in results.filter({ $0.node.name != nil }) {
@@ -117,7 +98,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
         }
     }
     
-    func addBoxToScene(position: SCNVector3) {
+    func addBoxToScene(name: String, position: SCNVector3) {
         let boxScene = SCNScene(named: "art.scnassets/box.scn")!
         
         let material = SCNMaterial()
@@ -125,19 +106,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
         
         let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
         
-        node.name = "Box\(score)"
+        node.name = name
         node.position = position
         
         sceneView.scene.rootNode.addChildNode(node)
-    }
-    
-    func updateScore(newScore: Int) {
-        let scoreString = String(format: "%04d", newScore)
-        scoreLabel.text = "SCORE: \(scoreString)"
-    }
-    
-    func updateFilesNearby(withNewValue value: Int) {
-        filesNearby.text = String(format: "%04d", value)
     }
     
 //    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -164,4 +136,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
 //    }
 }
 
-extension ARViewController {}
+// MARK: - UIDocumentPickerDelegate
+
+extension ARViewController: UIDocumentPickerDelegate {
+    @IBAction func onTakeFileButtonPeressed(_ sender: Any) {
+        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
+        documentPicker.delegate = self
+        documentPicker.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        print("URL: \(url.lastPathComponent)")
+        boxViewModel.uploadFile(url: url)
+    }
+}

@@ -10,21 +10,45 @@ import Foundation
 import SceneKit
 
 protocol BoxViewModelDelegate {
-   func updateScore(newScore: Int)
-   func updateFilesNearby(withNewValue value: Int)
-   func addBoxToScene(position: SCNVector3)
+    func updateScore(newScore: Int)
+    func updateFilesNearby(withNewValue value: Int)
+    func addBoxToScene(name: String, position: SCNVector3)
+    func updateButtonState(state: Bool)
 }
 
-class BoxViewModel {
-    var delegate : BoxViewModelDelegate?
-    var ipfsService : IPFSService
+class BoxViewModel : IPFSServiceDelegate {
+    
+    
+    var delegate: BoxViewModelDelegate?
+    var ipfsService: IPFSService
+    
+    var boxes : [Box] = []
+    
+    var readyForLaunch: Bool = false
+    var score: Int = 1
     
     init() {
         ipfsService = IPFSService()
     }
     
+    public func dropFileTouch(position: SCNVector3) {
+        let currentFileId = "12312312"
+        delegate?.addBoxToScene(name: currentFileId, position: position)
+        
+        
+        readyForLaunch = false
+        score += 1
+        
+        delegate?.updateScore(newScore: score)
+        delegate?.updateButtonState(state: true)
+    }
+    
     func uploadFile(url: URL) {
         ipfsService.saveFile(url: url)
+    }
+    
+    func updateBoxes(boxes: [Box]) {
+        self.boxes = boxes
     }
     
 }
