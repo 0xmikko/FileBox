@@ -25,10 +25,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
     @IBAction func onTakeFileButtonPeressed(_ sender: Any) {
         let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
         documentPicker.delegate = self
-        documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        present(documentPicker, animated: true, completion: nil)
-        mainButton.isEnabled = false
-        readyForLaunch = true
+        documentPicker.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        present(documentPicker, animated: true) {
+            self.mainButton.isEnabled = false
+            self.readyForLaunch = true
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -67,13 +69,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate, UIDocumentPickerDel
     
     // MARK: - UIDocumentPickerDelegate Methods
     
-    private func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
-        if controller.documentPickerMode == UIDocumentPickerMode.import {
-            // What should be the line below?
-            
-            print(url.path!)
-        }
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+
+        print("URL: \(url.lastPathComponent)")
+        boxViewModel.uploadFile(url: url)
     }
+    
     
     // MARK: - ARSCNViewDelegate
     

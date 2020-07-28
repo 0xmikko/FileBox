@@ -25,7 +25,7 @@
 		7496E50324D02C4F00DFFE28 /* IPFSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50224D02C4F00DFFE28 /* IPFSService.swift */; };
 		7496E50524D02F2000DFFE28 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50424D02F2000DFFE28 /* LocationService.swift */; };
 		74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A6A63524D038A30019947B /* UploadBoxResponse.swift */; };
-		74AB087124CF683E00457CA9 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74AB087024CF683E00457CA9 /* BradBunR.ttf */; };
+		74AC2A4A24D0BC4100D1B203 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74AC2A4924D0BC4100D1B203 /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,7 @@
 		7496E50224D02C4F00DFFE28 /* IPFSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPFSService.swift; sourceTree = "<group>"; };
 		7496E50424D02F2000DFFE28 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		74A6A63524D038A30019947B /* UploadBoxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadBoxResponse.swift; sourceTree = "<group>"; };
-		74AB087024CF683E00457CA9 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BradBunR.ttf; path = "../../../Downloads/brady_bunch-1/BradBunR.ttf"; sourceTree = "<group>"; };
+		74AC2A4924D0BC4100D1B203 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		963F969359792BE27AC6A9B7 /* Pods_FileBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7BD70D164952B59570E761 /* Pods-FileBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBox.release.xcconfig"; path = "Target Support Files/Pods-FileBox/Pods-FileBox.release.xcconfig"; sourceTree = "<group>"; };
 		D56110C2D06369C7ECE18983 /* Pods_FileBoxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBoxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +154,7 @@
 				743FCF0D24BE168B00705E13 /* Main.storyboard */,
 				743FCF1024BE168C00705E13 /* Assets.xcassets */,
 				743FCF1224BE168C00705E13 /* LaunchScreen.storyboard */,
+				74AC2A4924D0BC4100D1B203 /* Config.plist */,
 				743FCF1524BE168C00705E13 /* Info.plist */,
 			);
 			path = FileBox;
@@ -222,7 +223,6 @@
 		74AB086F24CF682300457CA9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				74AB087024CF683E00457CA9 /* BradBunR.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				743FCF0A24BE168B00705E13 /* art.scnassets in Resources */,
 				743FCF1424BE168C00705E13 /* LaunchScreen.storyboard in Resources */,
 				743FCF1124BE168C00705E13 /* Assets.xcassets in Resources */,
-				74AB087124CF683E00457CA9 /* BradBunR.ttf in Resources */,
+				74AC2A4A24D0BC4100D1B203 /* Config.plist in Resources */,
 				743FCF0F24BE168B00705E13 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

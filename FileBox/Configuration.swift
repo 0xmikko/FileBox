@@ -25,5 +25,5 @@ func loadConfig() {
 }
 
 func getFullURL(url: String) -> String {
-    return UserDefaults.standard.string(forKey: "BackendURL") ?? "" + url
+    return (UserDefaults.standard.string(forKey: "BackendURL") ?? "") + url
 }

@@ -23,8 +23,8 @@ class BoxViewModel {
         ipfsService = IPFSService()
     }
     
-    func uploadFile(url: String) {
-        
+    func uploadFile(url: URL) {
+        ipfsService.saveFile(url: url)
     }
     
 }
