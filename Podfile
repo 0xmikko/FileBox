@@ -7,6 +7,7 @@ target 'FileBox' do
 
   # Pods for FileBox
   pod 'Alamofire', '~> 5.2'
+  pod 'ARCL'
 
   target 'FileBoxTests' do
     inherit! :search_paths

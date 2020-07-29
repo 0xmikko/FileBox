@@ -26,6 +26,7 @@
 		7496E50524D02F2000DFFE28 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50424D02F2000DFFE28 /* LocationService.swift */; };
 		74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A6A63524D038A30019947B /* UploadBoxResponse.swift */; };
 		74AC2A4A24D0BC4100D1B203 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74AC2A4924D0BC4100D1B203 /* Config.plist */; };
+		74AC2A4C24D153D400D1B203 /* GPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC2A4B24D153D400D1B203 /* GPSViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		7496E50424D02F2000DFFE28 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		74A6A63524D038A30019947B /* UploadBoxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadBoxResponse.swift; sourceTree = "<group>"; };
 		74AC2A4924D0BC4100D1B203 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		74AC2A4B24D153D400D1B203 /* GPSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSViewController.swift; sourceTree = "<group>"; };
 		963F969359792BE27AC6A9B7 /* Pods_FileBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7BD70D164952B59570E761 /* Pods-FileBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBox.release.xcconfig"; path = "Target Support Files/Pods-FileBox/Pods-FileBox.release.xcconfig"; sourceTree = "<group>"; };
 		D56110C2D06369C7ECE18983 /* Pods_FileBoxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBoxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +193,7 @@
 			children = (
 				743FCF0B24BE168B00705E13 /* ARViewController.swift */,
 				7496E4FA24D028FE00DFFE28 /* BoxContentsViewController.swift */,
+				74AC2A4B24D153D400D1B203 /* GPSViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */,
+				74AC2A4C24D153D400D1B203 /* GPSViewController.swift in Sources */,
 				7496E50324D02C4F00DFFE28 /* IPFSService.swift in Sources */,
 				74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */,
 				743FCF0C24BE168B00705E13 /* ARViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eI6-MZ-2Ad">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TX2-CX-2CL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -137,6 +137,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHE-bq-KgC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-664" y="75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="G5h-H8-usN">
+            <objects>
+                <viewController id="TX2-CX-2CL" customClass="GPSViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eqR-yg-GAJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVI-xN-VrO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOOKOLOLOLL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7V-cn-dMW">
+                                <rect key="frame" x="146" y="112" width="123" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDd-RL-pN0">
+                                <rect key="frame" x="184" y="792" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addLoca:" destination="TX2-CX-2CL" eventType="touchUpInside" id="4Os-y9-oVX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LVI-xN-VrO" firstAttribute="top" secondItem="eqR-yg-GAJ" secondAttribute="top" id="11g-u9-GKj"/>
+                            <constraint firstItem="Ipl-Bh-EH5" firstAttribute="trailing" secondItem="W7V-cn-dMW" secondAttribute="trailing" constant="145" id="1GU-fB-iey"/>
+                            <constraint firstItem="W7V-cn-dMW" firstAttribute="leading" secondItem="Ipl-Bh-EH5" secondAttribute="leading" constant="146" id="8hn-qp-dqt"/>
+                            <constraint firstItem="LVI-xN-VrO" firstAttribute="leading" secondItem="Ipl-Bh-EH5" secondAttribute="leading" id="bQ0-GL-fhK"/>
+                            <constraint firstItem="Ipl-Bh-EH5" firstAttribute="bottom" secondItem="HDd-RL-pN0" secondAttribute="bottom" constant="40" id="hUe-0U-tdd"/>
+                            <constraint firstItem="W7V-cn-dMW" firstAttribute="top" secondItem="Ipl-Bh-EH5" secondAttribute="top" constant="68" id="i7y-A7-kAN"/>
+                            <constraint firstItem="LVI-xN-VrO" firstAttribute="trailing" secondItem="Ipl-Bh-EH5" secondAttribute="trailing" id="j3d-Lt-bxA"/>
+                            <constraint firstItem="HDd-RL-pN0" firstAttribute="leading" secondItem="Ipl-Bh-EH5" secondAttribute="leading" constant="184" id="mZu-xw-rLX"/>
+                            <constraint firstItem="Ipl-Bh-EH5" firstAttribute="trailing" secondItem="HDd-RL-pN0" secondAttribute="trailing" constant="184" id="p3b-9y-e5w"/>
+                            <constraint firstAttribute="bottom" secondItem="LVI-xN-VrO" secondAttribute="bottom" id="zk1-hx-0Bn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ipl-Bh-EH5"/>
+                    </view>
+                    <connections>
+                        <outlet property="locView" destination="LVI-xN-VrO" id="32n-PQ-AKb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GFA-fb-CFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-665.21739130434787" y="752.67857142857144"/>
         </scene>
     </scenes>
     <resources>
