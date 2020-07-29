@@ -15,13 +15,14 @@ protocol BoxViewModelDelegate {
     func updateFilesNearby(withNewValue value: Int)
     func addBox(id: String, location: CLLocation)
     func updateButtonState(state: Bool)
+    func showBoxDetails(box: Box)
 }
 
 class BoxViewModel: IPFSServiceDelegate {
     var delegate: BoxViewModelDelegate?
     var ipfsService: IPFSService
     
-    var boxes: Dictionary<String, Box> = [:]
+    var boxes: [String: Box] = [:]
     
     var readyForLaunch: Bool = false
     var score: Int = 1
@@ -34,8 +35,6 @@ class BoxViewModel: IPFSServiceDelegate {
     public func dropFileTouch(position: SCNVector3) {
         readyForLaunch = false
         
-        
-       
         delegate?.updateButtonState(state: true)
     }
     
@@ -46,7 +45,6 @@ class BoxViewModel: IPFSServiceDelegate {
                                         altitude: location.altitude)
         
         ipfsService.saveFile(boxDTO: boxCreateDTO, url: url)
-       
     }
     
     func addBox(box: Box) {
@@ -58,12 +56,13 @@ class BoxViewModel: IPFSServiceDelegate {
         delegate?.updateScore(newScore: score)
     }
     
-    func getBox(id: String)  {
-        print(boxes[id] ?? "No box found")
+    func getBox(id: String) {
+        guard let box = boxes[id] else {
+            print("No box found")
+            return
+        }
+        delegate?.showBoxDetails(box: box)
     }
     
-    
-    func updateBoxes(boxes: [Box]) {
-        
-    }
+    func updateBoxes(boxes: [Box]) {}
 }

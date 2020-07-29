@@ -10,11 +10,16 @@ import UIKit
 
 class BoxContentsViewController: UIViewController {
 
+    var box : Box?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Loaded with ", box!.id)
 
         // Do any additional setup after loading the view.
     }
+
     
 
     /*

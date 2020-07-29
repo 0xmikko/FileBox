@@ -21,6 +21,8 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     var sceneLocationView = SceneLocationView()
     var boxViewModel: BoxViewModel!
     
+      var currentBoxDetails : Box?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,4 +117,24 @@ extension ARViewController: LNTouchDelegate {
     }
     
     func locationNodeTouched(node: LocationNode) {}
+}
+
+// MARK : Router
+
+extension ARViewController {
+    
+  
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "goToBoxDetails") {
+            let destination = segue.destination as! BoxContentsViewController
+            destination.box = currentBoxDetails
+        }
+    }
+    
+    func showBoxDetails(box: Box) {
+        currentBoxDetails = box
+        performSegue(withIdentifier: "goToBoxDetails", sender: self)
+    }
 }
