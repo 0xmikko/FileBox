@@ -109,20 +109,49 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="75"/>
         </scene>
-        <!--Box Contents View Controller-->
+        <!--Box Deails View Controller-->
         <scene sceneID="QmB-Oy-cJT">
             <objects>
-                <viewController id="yty-Pq-Lc8" customClass="BoxContentsViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yty-Pq-Lc8" customClass="BoxDeailsViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8rn-2c-5gw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXq-9N-LoO" userLabel="IPFSHash">
+                                <rect key="frame" x="186" y="357.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Cardboard Box" translatesAutoresizingMaskIntoConstraints="NO" id="RMb-1j-uX3">
+                                <rect key="frame" x="28" y="40" width="358.5" height="297.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2I-qk-6Kt" userLabel="IPFSHash">
+                                <rect key="frame" x="186" y="398.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TXq-9N-LoO" firstAttribute="centerX" secondItem="8rn-2c-5gw" secondAttribute="centerX" id="JYP-4j-KON"/>
+                            <constraint firstItem="L2I-qk-6Kt" firstAttribute="centerX" secondItem="8rn-2c-5gw" secondAttribute="centerX" id="OcJ-WZ-siD"/>
+                            <constraint firstItem="L2I-qk-6Kt" firstAttribute="top" secondItem="TXq-9N-LoO" secondAttribute="bottom" constant="20" id="Z1U-DJ-ME5"/>
+                            <constraint firstItem="TXq-9N-LoO" firstAttribute="top" secondItem="RMb-1j-uX3" secondAttribute="bottom" constant="20" id="ne2-vD-4wP"/>
+                            <constraint firstItem="RMb-1j-uX3" firstAttribute="centerX" secondItem="8rn-2c-5gw" secondAttribute="centerX" id="qow-e9-Gkq"/>
+                            <constraint firstItem="RMb-1j-uX3" firstAttribute="top" secondItem="t9T-5F-k7K" secondAttribute="top" constant="40" id="xKo-PF-CIZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="t9T-5F-k7K"/>
                     </view>
+                    <connections>
+                        <outlet property="ipfsHash" destination="TXq-9N-LoO" id="VFB-lh-qqM"/>
+                        <outlet property="nameLabel" destination="L2I-qk-6Kt" id="4xJ-To-vQb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpN-OW-zl1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="75"/>
+            <point key="canvasLocation" x="915.94202898550736" y="75"/>
         </scene>
         <!--NavController-->
         <scene sceneID="BLH-x5-oRY">
@@ -191,6 +220,7 @@
     </scenes>
     <resources>
         <image name="18" width="2500" height="1666.5"/>
+        <image name="Cardboard Box" width="358.5" height="297.5"/>
         <image name="globeBoxIcon" width="256" height="230.5"/>
     </resources>
 </document>

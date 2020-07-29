@@ -9,16 +9,10 @@
 import Alamofire
 import Foundation
 
-protocol IPFSServiceDelegate {
-    func addBox(box: Box)
-}
-
-class IPFSService {
-    var delegate: IPFSServiceDelegate?
-
-    func getFile(id: String) {}
-
-    func saveFile(boxDTO: BoxCreateDTO, url: URL) {
+class BoxService {
+    
+    // Creates box on server and return new Box
+    func createBox(boxDTO: BoxCreateDTO, url: URL, completion: @escaping (Box) -> Void) {
         do {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(boxDTO)
@@ -33,7 +27,7 @@ class IPFSService {
                     do {
                         print("Getting data back!", response)
                         let newBox = try response.result.get()
-                        self.delegate?.addBox(box: newBox)
+                        completion(newBox)
 
                     } catch {
                         print("Error, cant get ID")
@@ -45,5 +39,26 @@ class IPFSService {
         } catch {
             return
         }
+    }
+    
+    // Get box details
+    func getBox(id: String, completetion: @escaping (Box) -> Void) {
+        AF.request(getFullURL(url: "/api/boxes/\(id)/"))
+
+            .responseDecodable(of: Box.self) { response in
+                do {
+                    print("Getting data back!", response)
+                    let newBox = try response.result.get()
+                    completetion(newBox)
+
+                } catch {
+                    print("Error, cant get ID")
+                }
+            }
+    }
+    
+    // Get array of boxes around providing coordinates
+    func getBoxesAround() {
+        
     }
 }

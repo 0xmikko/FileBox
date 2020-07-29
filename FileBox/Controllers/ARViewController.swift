@@ -112,7 +112,7 @@ extension ARViewController: LNTouchDelegate {
             // Do stuffs with the nodeImage
             // ...
             guard let id =  node.geometry?.name else { return }
-            boxViewModel.getBox(id: id)
+            boxViewModel.openBox(id: id)
         }
     }
     
@@ -128,7 +128,7 @@ extension ARViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "goToBoxDetails") {
-            let destination = segue.destination as! BoxContentsViewController
+            let destination = segue.destination as! BoxDeailsViewController
             destination.box = currentBoxDetails
         }
     }

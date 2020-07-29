@@ -21,11 +21,10 @@
 		746597C024D0A06400FAE7FA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746597BF24D0A06400FAE7FA /* Configuration.swift */; };
 		746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746597C124D0B09C00FAE7FA /* BoxViewModel.swift */; };
 		746C8F1E24D1915700482DBF /* BoxCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */; };
-		7496E4FB24D028FE00DFFE28 /* BoxContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E4FA24D028FE00DFFE28 /* BoxContentsViewController.swift */; };
+		746C8F2024D1B01800482DBF /* BoxDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */; };
+		7496E4FB24D028FE00DFFE28 /* BoxDeailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E4FA24D028FE00DFFE28 /* BoxDeailsViewController.swift */; };
 		7496E50124D02BAE00DFFE28 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50024D02BAE00DFFE28 /* Box.swift */; };
-		7496E50324D02C4F00DFFE28 /* IPFSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50224D02C4F00DFFE28 /* IPFSService.swift */; };
-		7496E50524D02F2000DFFE28 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50424D02F2000DFFE28 /* LocationService.swift */; };
-		74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A6A63524D038A30019947B /* UploadBoxResponse.swift */; };
+		7496E50324D02C4F00DFFE28 /* BoxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50224D02C4F00DFFE28 /* BoxService.swift */; };
 		74AC2A4A24D0BC4100D1B203 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74AC2A4924D0BC4100D1B203 /* Config.plist */; };
 		74AC2A5024D174BD00D1B203 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74AC2A4F24D174BD00D1B203 /* BradBunR.ttf */; };
 /* End PBXBuildFile section */
@@ -70,11 +69,10 @@
 		746597BF24D0A06400FAE7FA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		746597C124D0B09C00FAE7FA /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
 		746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCreateRequest.swift; sourceTree = "<group>"; };
-		7496E4FA24D028FE00DFFE28 /* BoxContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxContentsViewController.swift; sourceTree = "<group>"; };
+		746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailsViewModel.swift; sourceTree = "<group>"; };
+		7496E4FA24D028FE00DFFE28 /* BoxDeailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDeailsViewController.swift; sourceTree = "<group>"; };
 		7496E50024D02BAE00DFFE28 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		7496E50224D02C4F00DFFE28 /* IPFSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPFSService.swift; sourceTree = "<group>"; };
-		7496E50424D02F2000DFFE28 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		74A6A63524D038A30019947B /* UploadBoxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadBoxResponse.swift; sourceTree = "<group>"; };
+		7496E50224D02C4F00DFFE28 /* BoxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxService.swift; sourceTree = "<group>"; };
 		74AC2A4924D0BC4100D1B203 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		74AC2A4F24D174BD00D1B203 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BradBunR.ttf; sourceTree = "<group>"; };
 		963F969359792BE27AC6A9B7 /* Pods_FileBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				743FCF0B24BE168B00705E13 /* ARViewController.swift */,
-				7496E4FA24D028FE00DFFE28 /* BoxContentsViewController.swift */,
+				7496E4FA24D028FE00DFFE28 /* BoxDeailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				746597C124D0B09C00FAE7FA /* BoxViewModel.swift */,
+				746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -210,8 +209,7 @@
 		7496E4FF24D02B7000DFFE28 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				7496E50224D02C4F00DFFE28 /* IPFSService.swift */,
-				7496E50424D02F2000DFFE28 /* LocationService.swift */,
+				7496E50224D02C4F00DFFE28 /* BoxService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */,
-				74A6A63524D038A30019947B /* UploadBoxResponse.swift */,
 			);
 			path = Payloads;
 			sourceTree = "<group>";
@@ -488,16 +485,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746C8F2024D1B01800482DBF /* BoxDetailsViewModel.swift in Sources */,
 				746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */,
-				7496E50324D02C4F00DFFE28 /* IPFSService.swift in Sources */,
-				74A6A63624D038A30019947B /* UploadBoxResponse.swift in Sources */,
+				7496E50324D02C4F00DFFE28 /* BoxService.swift in Sources */,
 				746C8F1E24D1915700482DBF /* BoxCreateRequest.swift in Sources */,
 				743FCF0C24BE168B00705E13 /* ARViewController.swift in Sources */,
 				7496E50124D02BAE00DFFE28 /* Box.swift in Sources */,
 				743FCF0824BE168B00705E13 /* AppDelegate.swift in Sources */,
 				746597C024D0A06400FAE7FA /* Configuration.swift in Sources */,
-				7496E50524D02F2000DFFE28 /* LocationService.swift in Sources */,
-				7496E4FB24D028FE00DFFE28 /* BoxContentsViewController.swift in Sources */,
+				7496E4FB24D028FE00DFFE28 /* BoxDeailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

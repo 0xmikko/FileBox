@@ -18,10 +18,6 @@ class BoxDeailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let fileBox = box {
-       
-        }
-        
         print("Loaded with ", box!.id)
 
         // Do any additional setup after loading the view.

@@ -18,9 +18,9 @@ protocol BoxViewModelDelegate {
     func showBoxDetails(box: Box)
 }
 
-class BoxViewModel: IPFSServiceDelegate {
+class BoxViewModel {
     var delegate: BoxViewModelDelegate?
-    var ipfsService: IPFSService
+    var ipfsService: BoxService
     
     var boxes: [String: Box] = [:]
     
@@ -28,8 +28,7 @@ class BoxViewModel: IPFSServiceDelegate {
     var score: Int = 1
     
     init() {
-        ipfsService = IPFSService()
-        ipfsService.delegate = self
+        ipfsService = BoxService()
     }
     
     public func dropFileTouch(position: SCNVector3) {
@@ -44,7 +43,9 @@ class BoxViewModel: IPFSServiceDelegate {
                                         lng: location.coordinate.longitude,
                                         altitude: location.altitude)
         
-        ipfsService.saveFile(boxDTO: boxCreateDTO, url: url)
+        ipfsService.createBox(boxDTO: boxCreateDTO, url: url) { box in
+            self.addBox(box: box)
+        }
     }
     
     func addBox(box: Box) {
@@ -56,7 +57,7 @@ class BoxViewModel: IPFSServiceDelegate {
         delegate?.updateScore(newScore: score)
     }
     
-    func getBox(id: String) {
+    func openBox(id: String) {
         guard let box = boxes[id] else {
             print("No box found")
             return
@@ -64,5 +65,5 @@ class BoxViewModel: IPFSServiceDelegate {
         delegate?.showBoxDetails(box: box)
     }
     
-    func updateBoxes(boxes: [Box]) {}
+    
 }
