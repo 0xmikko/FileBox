@@ -6,18 +6,19 @@
 //  Copyright © 2020 Mikhail Lazarev. All rights reserved.
 //
 
-import ARKit
+import ARCL
+import CoreLocation
 import SceneKit
 import UIKit
 
-class ARViewController: UIViewController, ARSCNViewDelegate, BoxViewModelDelegate {
-    
+class ARViewController: UIViewController, BoxViewModelDelegate {
     // Control elements
-    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var ARView: UIView!
     @IBOutlet var mainButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var filesNearby: UILabel!
     
+    var sceneLocationView = SceneLocationView()
     var boxViewModel: BoxViewModel!
     
     override func viewDidLoad() {
@@ -28,30 +29,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate, BoxViewModelDelegat
         boxViewModel.delegate = self
         
         // Set the view's delegate
-        sceneView.delegate = self
-        sceneView.debugOptions = [.showFeaturePoints]
-        sceneView.automaticallyUpdatesLighting = true
+        sceneLocationView.run()
+        ARView.addSubview(sceneLocationView)
+        
+        sceneLocationView.locationNodeTouchDelegate = self
         
         // Configure main button
         mainButton.setTitle("Tap to place for launch", for: .disabled)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
-        
-        // Run the view's session
-        sceneView.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Pause the view's session
-        sceneView.session.pause()
+        sceneLocationView.frame = ARView.bounds
     }
     
     // MARK: - Interface
@@ -71,83 +61,58 @@ class ARViewController: UIViewController, ARSCNViewDelegate, BoxViewModelDelegat
     
     // MARK: - ARSCNViewDelegate
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let touchLocation = touch.location(in: sceneView)
-            
-            if boxViewModel.readyForLaunch {
-                let results = sceneView.hitTest(touchLocation, types: .featurePoint)
-                
-                guard let result = results.first else { return }
-                let position = SCNVector3(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
-                
-                boxViewModel.dropFileTouch(position: position)
-                
-            } else {
-                let results = sceneView.hitTest(touchLocation, options: [SCNHitTestOption.searchMode: 1])
-                
-                for result in results.filter({ $0.node.name != nil }) {
-                    print(result.node.name ?? "HUI")
-                    if result.node.name == "Your node name" {
-                        // do manipulations
-                    }
-                }
-                
-                print(results)
-            }
-        }
-    }
-    
-    func addBoxToScene(name: String, position: SCNVector3) {
-        let boxScene = SCNScene(named: "art.scnassets/box.scn")!
+   
         
-        let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "art.scnassets/box.tga")
-        
-        let node = boxScene.rootNode.childNode(withName: "Box", recursively: true)!
-        
-        node.name = name
-        node.position = position
-        
-        sceneView.scene.rootNode.addChildNode(node)
-    }
-    
-//    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        if anchor is ARPlaneAnchor {
-//            print("Plane detected")
-//            let planeAncor = anchor as! ARPlaneAnchor
-//            let plane = SCNPlane(width: CGFloat(planeAncor.extent.x), height: CGFloat(planeAncor.extent.z))
 //
-//            let material = SCNMaterial()
-//            material.diffuse.contents = UIImage(named: "art.scnassets/wood.jpg")
-//            plane.materials = [material]
-//
-//            let planeNode = SCNNode()
-//            planeNode.position = SCNVector3(planeAncor.center.x, 0, planeAncor.center.z)
-//
-//            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
-//
-//            planeNode.geometry = plane
-//
-//            node.addChildNode(planeNode)
-//
-//            print(planeAncor.center)
-//        }
+//        sceneLocationView.addLocationNodeForCurrentPosition(locationNode: annotationNode)
+//        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.coordinate ?? "Nod:")
+//        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.altitude ?? "Nod:")
+//        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.course ?? "Nod:")
 //    }
 }
 
 // MARK: - UIDocumentPickerDelegate
 
 extension ARViewController: UIDocumentPickerDelegate {
-    @IBAction func onTakeFileButtonPeressed(_ sender: Any) {
+    @IBAction func onUploadButtonPressed(_ sender: Any) {
         let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = UIModalPresentationStyle.formSheet
         present(documentPicker, animated: true, completion: nil)
     }
-    
+
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         print("URL: \(url.lastPathComponent)")
-        boxViewModel.uploadFile(url: url)
+        
+        guard let currentLocation = sceneLocationView.sceneLocationManager.currentLocation else { return }
+        
+        boxViewModel.createBox(url: url, location: currentLocation)
     }
+}
+
+// MARK: - Box Controller
+
+extension ARViewController: LNTouchDelegate {
+    
+    // Add a box to particular location
+    func addBox(id: String, location: CLLocation) {
+        
+        let image = UIImage(named: "Cardboard Box")!
+        let annotationNode = LocationAnnotationNode(location: location, image: image)
+        annotationNode.childNodes.first?.geometry?.name = id
+        sceneLocationView.addLocationNodeForCurrentPosition(locationNode: annotationNode)
+    }
+        
+    // Invokes when user tap on Box
+    func annotationNodeTouched(node: AnnotationNode) {
+        // Do stuffs with the node instance
+        if let nodeImage = node.image {
+            // Do stuffs with the nodeImage
+            // ...
+            guard let id =  node.geometry?.name else { return }
+            boxViewModel.getBox(id: id)
+        }
+    }
+    
+    func locationNodeTouched(node: LocationNode) {}
 }

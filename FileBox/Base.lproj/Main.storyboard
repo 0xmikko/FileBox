@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TX2-CX-2CL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eI6-MZ-2Ad">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -20,11 +20,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-Ts-VQn" userLabel="ARView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="776"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE: 0001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0o-kg-8x0">
-                                <rect key="frame" x="20" y="64" width="201" height="39"/>
+                                <rect key="frame" x="20" y="64" width="145.5" height="39"/>
                                 <fontDescription key="fontDescription" name="BradyBunchRemastered" family="Brady Bunch Remastered" pointSize="32"/>
                                 <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,21 +33,21 @@
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdM-Uz-yWt">
-                                <rect key="frame" x="356" y="64" width="38" height="39"/>
+                                <rect key="frame" x="369" y="64" width="25" height="39"/>
                                 <fontDescription key="fontDescription" name="BradyBunchRemastered" family="Brady Bunch Remastered" pointSize="32"/>
                                 <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzq-N9-BPC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzq-N9-BPC" userLabel="BottomBarView">
                                 <rect key="frame" x="0.0" y="776" width="414" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18" translatesAutoresizingMaskIntoConstraints="NO" id="qRD-4K-vyx">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pF-Gq-wie">
-                                        <rect key="frame" x="51" y="20" width="312" height="63"/>
+                                        <rect key="frame" x="68.5" y="20" width="277" height="63"/>
                                         <fontDescription key="fontDescription" name="BradyBunchRemastered" family="Brady Bunch Remastered" pointSize="43"/>
                                         <size key="titleShadowOffset" width="6" height="2"/>
                                         <state key="normal" title="Tap to select file">
@@ -54,7 +55,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="onTakeFileButtonPeressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="aU5-yK-1Ea"/>
+                                            <action selector="onUploadButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="E3i-mt-0Oe"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -70,7 +71,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globeBoxIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mzw-dF-5cl">
-                                <rect key="frame" x="308" y="63.5" width="40" height="40"/>
+                                <rect key="frame" x="321" y="63.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mzw-dF-5cl" secondAttribute="height" multiplier="1:1" id="2lH-SL-nga"/>
                                     <constraint firstAttribute="width" constant="40" id="6rT-Wu-Gjm"/>
@@ -80,26 +81,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="HdM-Uz-yWt" secondAttribute="trailing" constant="20" id="2GR-nd-5gt"/>
+                            <constraint firstItem="Vzq-N9-BPC" firstAttribute="top" secondItem="5XE-Ts-VQn" secondAttribute="bottom" id="4wI-9r-oXV"/>
+                            <constraint firstItem="5XE-Ts-VQn" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="AkY-J4-vzh"/>
                             <constraint firstItem="R0o-kg-8x0" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="20" id="Axl-si-agU"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
                             <constraint firstItem="Vzq-N9-BPC" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leading" id="Ivi-Hw-Q3H"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
+                            <constraint firstItem="5XE-Ts-VQn" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="KZH-ZC-fip"/>
                             <constraint firstItem="HdM-Uz-yWt" firstAttribute="centerY" secondItem="R0o-kg-8x0" secondAttribute="centerY" id="ZaC-hK-BD1"/>
                             <constraint firstAttribute="bottom" secondItem="Vzq-N9-BPC" secondAttribute="bottom" id="lJK-G6-eR3"/>
                             <constraint firstItem="Vzq-N9-BPC" firstAttribute="trailing" secondItem="U0K-SW-4ec" secondAttribute="trailing" id="mBw-iN-qN9"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
                             <constraint firstItem="R0o-kg-8x0" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="20" id="s1D-cL-XYe"/>
                             <constraint firstItem="HdM-Uz-yWt" firstAttribute="leading" secondItem="mzw-dF-5cl" secondAttribute="trailing" constant="8" id="wkQ-IB-X41"/>
                             <constraint firstItem="HdM-Uz-yWt" firstAttribute="centerY" secondItem="mzw-dF-5cl" secondAttribute="centerY" id="wpu-s3-mRF"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="5XE-Ts-VQn" secondAttribute="trailing" id="zdn-Ck-gRa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZLS-s9-uwe"/>
                     <connections>
+                        <outlet property="ARView" destination="5XE-Ts-VQn" id="qy3-Lw-8ot"/>
                         <outlet property="filesNearby" destination="HdM-Uz-yWt" id="lj4-AH-y1d"/>
                         <outlet property="mainButton" destination="7pF-Gq-wie" id="TEC-dI-mrR"/>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                         <outlet property="scoreLabel" destination="R0o-kg-8x0" id="HHg-GN-y1d"/>
                         <segue destination="yty-Pq-Lc8" kind="showDetail" identifier="goToBoxDetails" id="Fyx-Zw-CaQ"/>
                     </connections>
