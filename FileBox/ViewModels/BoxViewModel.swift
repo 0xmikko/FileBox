@@ -15,7 +15,7 @@ protocol BoxViewModelDelegate {
     func updateFilesNearby(withNewValue value: Int)
     func addBox(id: String, location: CLLocation)
     func updateButtonState(state: Bool)
-    func showBoxDetails(box: Box)
+    func showBoxDetails(id: String)
 }
 
 class BoxViewModel {
@@ -58,11 +58,7 @@ class BoxViewModel {
     }
     
     func openBox(id: String) {
-        guard let box = boxes[id] else {
-            print("No box found")
-            return
-        }
-        delegate?.showBoxDetails(box: box)
+        delegate?.showBoxDetails(id: id)
     }
     
     

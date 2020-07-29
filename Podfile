@@ -8,6 +8,7 @@ target 'FileBox' do
   # Pods for FileBox
   pod 'Alamofire', '~> 5.2'
   pod 'ARCL'
+  pod 'FloatRatingView', '~> 4'
 
   target 'FileBoxTests' do
     inherit! :search_paths

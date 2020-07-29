@@ -8,34 +8,62 @@
 
 import UIKit
 
-class BoxDeailsViewController: UIViewController {
+struct BoxPref {
+    var title: String
+    var value: String
+}
 
-    var box : Box?
-    @IBOutlet weak var ipfsHash: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate {
+    var boxDetailsViewModel: BoxDetailsViewModel?
+    var boxId: String?
+    var prefs = [BoxPref]()
+    @IBOutlet var contentLabel: UILabel!
+    @IBOutlet var ipfsHashLabel: UILabel!
     
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var infoTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Loaded with ", box!.id)
-
-        // Do any additional setup after loading the view.
+        infoTable.dataSource = self
+        
+        boxDetailsViewModel = BoxDetailsViewModel()
+        boxDetailsViewModel?.delegate = self
+        if let id = boxId {
+            boxDetailsViewModel?.loadDetails(id: id)
+        }
     }
-
-    func updateDetails (box: Box) {
-        ipfsHash.text = box.id
-        nameLabel.text = box.name
+    
+    func updateName(_ name: String) {
+        nameLabel.text = name
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func updateContent(_ content: String) {
+        contentLabel.text = content
     }
-    */
+    
+    func updateIPFSHash(_ hash: String) {
+        ipfsHashLabel.text = hash
+    }
+    
+    func updatePrefs(_ newPrefs: [BoxPref]) {
+        prefs = newPrefs
+        infoTable.reloadData()
+    }
+}
 
+extension BoxDeailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return prefs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BoxPref", for: indexPath)
+        if let cell = cell as? PrefCellView {
+            cell.title.text = prefs[indexPath.row].title
+            cell.value.text = prefs[indexPath.row].value
+        }
+        return cell
+    }
 }

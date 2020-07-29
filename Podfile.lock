@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.2.2)
   - ARCL (1.3.0)
+  - FloatRatingView (4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - ARCL
+  - FloatRatingView (~> 4)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - ARCL
+    - FloatRatingView
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   ARCL: db48b6927d6f3f49f29568295ed91c94ab8d4aab
+  FloatRatingView: bb6bdddfbeec51b1d387b4bd50abc27b4dfccd48
 
-PODFILE CHECKSUM: 49aa2cb34488ab698919dabb46ab1d47a45ff383
+PODFILE CHECKSUM: 84844b39de9e0bc76a28a76df31417834d75706a
 
 COCOAPODS: 1.8.4

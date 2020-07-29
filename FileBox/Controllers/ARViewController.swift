@@ -21,7 +21,7 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     var sceneLocationView = SceneLocationView()
     var boxViewModel: BoxViewModel!
     
-      var currentBoxDetails : Box?
+    var boxDetailsId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +63,6 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     
     // MARK: - ARSCNViewDelegate
     
-   
-        
 //
 //        sceneLocationView.addLocationNodeForCurrentPosition(locationNode: annotationNode)
 //        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.coordinate ?? "Nod:")
@@ -82,7 +80,7 @@ extension ARViewController: UIDocumentPickerDelegate {
         documentPicker.modalPresentationStyle = UIModalPresentationStyle.formSheet
         present(documentPicker, animated: true, completion: nil)
     }
-
+    
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         print("URL: \(url.lastPathComponent)")
         
@@ -95,23 +93,21 @@ extension ARViewController: UIDocumentPickerDelegate {
 // MARK: - Box Controller
 
 extension ARViewController: LNTouchDelegate {
-    
     // Add a box to particular location
     func addBox(id: String, location: CLLocation) {
-        
         let image = UIImage(named: "Cardboard Box")!
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         annotationNode.childNodes.first?.geometry?.name = id
         sceneLocationView.addLocationNodeForCurrentPosition(locationNode: annotationNode)
     }
-        
+    
     // Invokes when user tap on Box
     func annotationNodeTouched(node: AnnotationNode) {
         // Do stuffs with the node instance
         if let nodeImage = node.image {
             // Do stuffs with the nodeImage
             // ...
-            guard let id =  node.geometry?.name else { return }
+            guard let id = node.geometry?.name else { return }
             boxViewModel.openBox(id: id)
         }
     }
@@ -119,22 +115,18 @@ extension ARViewController: LNTouchDelegate {
     func locationNodeTouched(node: LocationNode) {}
 }
 
-// MARK : Router
+// MARK: Router
 
 extension ARViewController {
-    
-  
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if (segue.identifier == "goToBoxDetails") {
+        if segue.identifier == "goToBoxDetails" {
             let destination = segue.destination as! BoxDeailsViewController
-            destination.box = currentBoxDetails
+            destination.boxId = boxDetailsId
         }
     }
     
-    func showBoxDetails(box: Box) {
-        currentBoxDetails = box
+    func showBoxDetails(id: String) {
+        boxDetailsId = id
         performSegue(withIdentifier: "goToBoxDetails", sender: self)
     }
 }

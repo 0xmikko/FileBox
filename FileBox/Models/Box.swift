@@ -15,15 +15,11 @@ struct Box : Encodable, Decodable {
     var lat: Double
     var lng: Double
     var altitude: Double
-    
-    init(id: String, dto: BoxCreateDTO) {
-        self.id = id
-        name = dto.name
-        lat = dto.lat
-        lng = dto.lng
-        altitude = dto.altitude
-    }
-    
+    var ipfsHash: String?
+    var content: String
+    var opened: Int
+    var downloaded : Int
+        
     func getLocation() -> CLLocation {
         let loc2 = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         return CLLocation(coordinate: loc2, altitude: altitude)
