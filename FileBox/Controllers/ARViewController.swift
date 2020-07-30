@@ -61,7 +61,7 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     }
     
     func updateFilesNearby(withNewValue value: Int) {
-        filesNearby.text = String(format: "%04d", value)
+        filesNearby.text = String(format: "%03d", value)
     }
     
     func updateButtonState(state: Bool) {

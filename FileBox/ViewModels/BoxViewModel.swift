@@ -66,7 +66,9 @@ class BoxViewModel {
                 }
                 self.boxes[box.id] = box
             }
+            self.delegate?.updateFilesNearby(withNewValue: nearBoxes.count)
         }
+        
     }
     
     func onNewCoordinate(location: CLLocation) {
