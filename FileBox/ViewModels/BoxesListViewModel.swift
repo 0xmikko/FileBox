@@ -14,7 +14,7 @@ protocol BoxesListViewModelDelegate {
 
 class BoxesListViewModel {
     
-    var delefate : BoxesListViewModelDelegate?
+    var delegate : BoxesListViewModelDelegate?
     var boxService: BoxService
     
     init() {
@@ -22,8 +22,9 @@ class BoxesListViewModel {
     }
     
     func loadData() {
+        
         boxService.getBoxesAround() { list in
-            print(list)
+            self.delegate?.updateBoxesData(near: list.near, top: list.top)
         }
     }
     

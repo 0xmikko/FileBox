@@ -12,8 +12,7 @@ import CoreLocation
 struct Box : Encodable, Decodable {
     var id: String
     var name: String
-    var lat: Double
-    var lng: Double
+    var location: [Double]
     var altitude: Double
     var ipfsHash: String?
     var content: String
@@ -23,7 +22,7 @@ struct Box : Encodable, Decodable {
 
     // Return CLLLocation object based on Box parameters
     func getLocation() -> CLLocation {
-        let loc2 = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        let loc2 = CLLocationCoordinate2D(latitude: location[0], longitude: location[1])
         return CLLocation(coordinate: loc2, altitude: altitude)
         
     }

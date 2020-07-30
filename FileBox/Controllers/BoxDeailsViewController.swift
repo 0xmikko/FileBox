@@ -27,6 +27,7 @@ class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate {
         super.viewDidLoad()
         
         infoTable.dataSource = self
+        infoTable.separatorColor = UIColor.black
         
         boxDetailsViewModel = BoxDetailsViewModel()
         boxDetailsViewModel?.delegate = self

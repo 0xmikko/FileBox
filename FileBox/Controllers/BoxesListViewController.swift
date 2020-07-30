@@ -14,7 +14,8 @@ enum BoxListMode {
 }
 
 class BoxesListViewController: UIViewController, BoxesListViewModelDelegate {
-    @IBOutlet var boxesListTableView: UITableView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var modeSegment: UISegmentedControl!
     
     var boxesListViewModel: BoxesListViewModel?
     
@@ -26,14 +27,32 @@ class BoxesListViewController: UIViewController, BoxesListViewModelDelegate {
         super.viewDidLoad()
         
         boxesListViewModel = BoxesListViewModel()
-        boxesListViewModel?.delefate = self
+        boxesListViewModel?.delegate = self
+        boxesListViewModel?.loadData()
         
+        tableView.dataSource = self
+        tableView.separatorColor = UIColor.black
     }
     
     func updateBoxesData(near: [Box], top: [Box]) {
         nearBoxesList = near
         topBoxesList = top
-        boxesListTableView.reloadData()
+        tableView.reloadData()
+    }
+    
+    @IBAction func modeSwitch(_ sender: Any) {
+        switch modeSegment.selectedSegmentIndex {
+        case 0:
+            mode = .near
+            
+        case 1:
+            mode = .top
+            
+        default:
+            mode = .near
+        }
+        print(mode, topBoxesList)
+        tableView.reloadData()
     }
 }
 
@@ -41,16 +60,19 @@ extension BoxesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch mode {
         case .near:
+            
             return nearBoxesList.count
         case .top:
+            
             return topBoxesList.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = boxesListTableView.dequeueReusableCell(withIdentifier: "BoxListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BoxListCell", for: indexPath)
         if let cell = cell as? BoxListTableViewCell {
             let box = mode == .near ? nearBoxesList[indexPath.row] : topBoxesList[indexPath.row]
+            print("BOX", box)
             cell.updateData(box)
         }
         return cell

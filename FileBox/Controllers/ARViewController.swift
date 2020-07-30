@@ -18,6 +18,7 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var filesNearby: UILabel!
     
+   
     var sceneLocationView = SceneLocationView()
     var boxViewModel: BoxViewModel!
     
@@ -38,7 +39,19 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
         
         // Configure main button
         mainButton.setTitle("Tap to place for launch", for: .disabled)
+        
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ARViewController.performChange))
+        gesture.direction = .left
+        self.view.addGestureRecognizer(gesture)
+
+       
+        
     }
+    
+    @objc func performChange() {
+        print("GESTURE")
+               self.performSegue(withIdentifier: "goBoxesList", sender: nil)
+           }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -127,6 +140,10 @@ extension ARViewController {
     
     func showBoxDetails(id: String) {
         boxDetailsId = id
+        performSegue(withIdentifier: "goToBoxDetails", sender: self)
+    }
+    
+    func showBoxesList() {
         performSegue(withIdentifier: "goToBoxDetails", sender: self)
     }
 }

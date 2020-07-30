@@ -93,6 +93,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="HdM-Uz-yWt" secondAttribute="trailing" constant="20" id="2GR-nd-5gt"/>
                             <constraint firstItem="Vzq-N9-BPC" firstAttribute="top" secondItem="5XE-Ts-VQn" secondAttribute="bottom" id="4wI-9r-oXV"/>
@@ -117,7 +118,7 @@
                         <outlet property="mainButton" destination="7pF-Gq-wie" id="TEC-dI-mrR"/>
                         <outlet property="scoreLabel" destination="R0o-kg-8x0" id="HHg-GN-y1d"/>
                         <segue destination="yty-Pq-Lc8" kind="presentation" identifier="goToBoxDetails" id="Fyx-Zw-CaQ"/>
-                        <segue destination="TX2-CX-2CL" kind="show" id="Y5L-Tx-kfO"/>
+                        <segue destination="TX2-CX-2CL" kind="presentation" identifier="goBoxesList" modalTransitionStyle="flipHorizontal" id="Y5L-Tx-kfO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -393,24 +394,27 @@
             <objects>
                 <viewController title="Top Boxes Controller" id="TX2-CX-2CL" userLabel="BoxesList Controller" customClass="BoxesListViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eqR-yg-GAJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="10" translatesAutoresizingMaskIntoConstraints="NO" id="oUD-qJ-S0I">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FeR-Ll-tfx">
-                                <rect key="frame" x="124.5" y="64" width="165" height="32"/>
+                                <rect key="frame" x="124.5" y="20" width="165" height="32"/>
                                 <segments>
                                     <segment title="Near me"/>
                                     <segment title="Top Boxes"/>
                                 </segments>
+                                <connections>
+                                    <action selector="modeSwitch:" destination="TX2-CX-2CL" eventType="valueChanged" id="6gU-6r-h7d"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tS0-dt-fqT">
-                                <rect key="frame" x="0.0" y="115" width="414" height="781"/>
+                                <rect key="frame" x="0.0" y="71" width="414" height="771"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST3-5l-oRi">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="781"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boxes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bw-id-6jS">
                                                 <rect key="frame" x="20" y="20" width="374" height="41"/>
@@ -419,18 +423,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0VH-Yh-dCh">
-                                                <rect key="frame" x="0.0" y="81" width="414" height="700"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="81" width="414" height="690"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BoxListCell" id="itT-54-jYW" customClass="BoxListTableViewCell" customModule="FileBox" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="414" height="69.5"/>
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="itT-54-jYW" id="lXZ-XP-TcC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="WZ4-Y3-bDU">
-                                                                    <rect key="frame" x="20" y="0.0" width="374" height="69.5"/>
+                                                                    <rect key="frame" x="20" y="5" width="374" height="69.5"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaD-A8-wrJ" userLabel="IconView">
                                                                             <rect key="frame" x="0.0" y="0.0" width="69" height="69.5"/>
@@ -439,7 +443,7 @@
                                                                                     <rect key="frame" x="0.0" y="0.0" width="69" height="69.5"/>
                                                                                 </imageView>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="bottom" secondItem="hsf-vU-gmK" secondAttribute="bottom" id="384-X6-j8S"/>
                                                                                 <constraint firstItem="hsf-vU-gmK" firstAttribute="top" secondItem="jaD-A8-wrJ" secondAttribute="top" id="3ma-7f-WHu"/>
@@ -464,7 +468,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="bottom" secondItem="LGV-ez-fk0" secondAttribute="bottom" constant="5" id="BJh-yh-v9m"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="LGV-ez-fk0" secondAttribute="trailing" id="Pc7-15-40D"/>
@@ -499,7 +503,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="1cc-46-MB9" firstAttribute="centerX" secondItem="p6g-n5-cTV" secondAttribute="centerX" id="1zT-gP-lTt"/>
                                                                                 <constraint firstItem="1cc-46-MB9" firstAttribute="leading" secondItem="p6g-n5-cTV" secondAttribute="leading" id="4Ue-Gc-Jul"/>
@@ -523,13 +527,15 @@
                                                                     </constraints>
                                                                 </stackView>
                                                             </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="WZ4-Y3-bDU" firstAttribute="top" secondItem="lXZ-XP-TcC" secondAttribute="top" id="72r-SS-B7t"/>
+                                                                <constraint firstAttribute="bottom" secondItem="WZ4-Y3-bDU" secondAttribute="bottom" constant="5" id="KeK-zW-IAu"/>
                                                                 <constraint firstAttribute="trailing" secondItem="WZ4-Y3-bDU" secondAttribute="trailing" constant="20" id="RLe-9n-RYt"/>
                                                                 <constraint firstItem="WZ4-Y3-bDU" firstAttribute="leading" secondItem="lXZ-XP-TcC" secondAttribute="leading" constant="20" id="SN7-vg-xJy"/>
-                                                                <constraint firstAttribute="bottom" secondItem="WZ4-Y3-bDU" secondAttribute="bottom" id="n31-DH-ziM"/>
+                                                                <constraint firstItem="WZ4-Y3-bDU" firstAttribute="top" secondItem="lXZ-XP-TcC" secondAttribute="top" constant="5" id="xmd-3E-8Ii"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
                                                             <outlet property="boxDistance" destination="1cc-46-MB9" id="chb-PF-WGh"/>
                                                             <outlet property="boxName" destination="KCa-X5-dyi" id="In9-Id-Le8"/>
@@ -577,13 +583,11 @@
                             <constraint firstItem="FeR-Ll-tfx" firstAttribute="top" secondItem="Ipl-Bh-EH5" secondAttribute="top" constant="20" id="vVp-VD-DTP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ipl-Bh-EH5"/>
-                        <connections>
-                            <outlet property="boxListTableView" destination="0VH-Yh-dCh" id="9eH-Iq-pfR"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Nxf-98-uaH"/>
                     <connections>
-                        <outlet property="boxesListTableView" destination="0VH-Yh-dCh" id="PF0-6o-H8u"/>
+                        <outlet property="modeSegment" destination="FeR-Ll-tfx" id="ADa-Hz-ink"/>
+                        <outlet property="tableView" destination="0VH-Yh-dCh" id="Qh3-EX-XA6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFA-fb-CFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

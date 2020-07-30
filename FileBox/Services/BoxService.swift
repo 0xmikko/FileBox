@@ -58,6 +58,8 @@ class BoxService {
 
     // Get array of boxes around providing coordinates and top boxes also
     func getBoxesAround(completetion: @escaping (BoxListResponse) -> Void) {
+        
+        print("GET BOXES")
         AF.request(getFullURL(url: "/api/boxes/?lat=50&lng=50"))
             .responseDecodable(of: BoxListResponse.self) { response in
                 do {
