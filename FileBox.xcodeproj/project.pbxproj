@@ -20,9 +20,11 @@
 		743FCF2A24BE168C00705E13 /* FileBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743FCF2924BE168C00705E13 /* FileBoxUITests.swift */; };
 		746597C024D0A06400FAE7FA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746597BF24D0A06400FAE7FA /* Configuration.swift */; };
 		746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746597C124D0B09C00FAE7FA /* BoxViewModel.swift */; };
+		746B666624D2D04F0097DE3B /* BoxesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B666524D2D04F0097DE3B /* BoxesListTableViewCell.swift */; };
+		746B666824D2D0930097DE3B /* BoxesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B666724D2D0930097DE3B /* BoxesListViewController.swift */; };
 		746C8F1E24D1915700482DBF /* BoxCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */; };
 		746C8F2024D1B01800482DBF /* BoxDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */; };
-		746C8F2224D204C900482DBF /* PrefCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F2124D204C900482DBF /* PrefCellView.swift */; };
+		746C8F2224D204C900482DBF /* BoxDetailsPrefCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F2124D204C900482DBF /* BoxDetailsPrefCellView.swift */; };
 		7496E4FB24D028FE00DFFE28 /* BoxDeailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E4FA24D028FE00DFFE28 /* BoxDeailsViewController.swift */; };
 		7496E50124D02BAE00DFFE28 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50024D02BAE00DFFE28 /* Box.swift */; };
 		7496E50324D02C4F00DFFE28 /* BoxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496E50224D02C4F00DFFE28 /* BoxService.swift */; };
@@ -69,9 +71,11 @@
 		743FCF2B24BE168C00705E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746597BF24D0A06400FAE7FA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		746597C124D0B09C00FAE7FA /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
+		746B666524D2D04F0097DE3B /* BoxesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxesListTableViewCell.swift; sourceTree = "<group>"; };
+		746B666724D2D0930097DE3B /* BoxesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxesListViewController.swift; sourceTree = "<group>"; };
 		746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCreateRequest.swift; sourceTree = "<group>"; };
 		746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailsViewModel.swift; sourceTree = "<group>"; };
-		746C8F2124D204C900482DBF /* PrefCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefCellView.swift; sourceTree = "<group>"; };
+		746C8F2124D204C900482DBF /* BoxDetailsPrefCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailsPrefCellView.swift; sourceTree = "<group>"; };
 		7496E4FA24D028FE00DFFE28 /* BoxDeailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDeailsViewController.swift; sourceTree = "<group>"; };
 		7496E50024D02BAE00DFFE28 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		7496E50224D02C4F00DFFE28 /* BoxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxService.swift; sourceTree = "<group>"; };
@@ -195,7 +199,9 @@
 			children = (
 				743FCF0B24BE168B00705E13 /* ARViewController.swift */,
 				7496E4FA24D028FE00DFFE28 /* BoxDeailsViewController.swift */,
-				746C8F2124D204C900482DBF /* PrefCellView.swift */,
+				746C8F2124D204C900482DBF /* BoxDetailsPrefCellView.swift */,
+				746B666524D2D04F0097DE3B /* BoxesListTableViewCell.swift */,
+				746B666724D2D0930097DE3B /* BoxesListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,11 +494,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746B666824D2D0930097DE3B /* BoxesListViewController.swift in Sources */,
 				746C8F2024D1B01800482DBF /* BoxDetailsViewModel.swift in Sources */,
 				746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */,
 				7496E50324D02C4F00DFFE28 /* BoxService.swift in Sources */,
-				746C8F2224D204C900482DBF /* PrefCellView.swift in Sources */,
+				746C8F2224D204C900482DBF /* BoxDetailsPrefCellView.swift in Sources */,
 				746C8F1E24D1915700482DBF /* BoxCreateRequest.swift in Sources */,
+				746B666624D2D04F0097DE3B /* BoxesListTableViewCell.swift in Sources */,
 				743FCF0C24BE168B00705E13 /* ARViewController.swift in Sources */,
 				7496E50124D02BAE00DFFE28 /* Box.swift in Sources */,
 				743FCF0824BE168B00705E13 /* AppDelegate.swift in Sources */,
