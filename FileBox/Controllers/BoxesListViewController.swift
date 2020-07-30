@@ -14,8 +14,10 @@ enum BoxListMode {
 }
 
 class BoxesListViewController: UIViewController, BoxesListViewModelDelegate {
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var modeSegment: UISegmentedControl!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var boxesListViewModel: BoxesListViewModel?
     
@@ -44,9 +46,11 @@ class BoxesListViewController: UIViewController, BoxesListViewModelDelegate {
         switch modeSegment.selectedSegmentIndex {
         case 0:
             mode = .near
+            titleLabel.text = "Nearby"
             
         case 1:
             mode = .top
+            titleLabel.text = "Top boxes"
             
         default:
             mode = .near

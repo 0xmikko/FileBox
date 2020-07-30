@@ -416,7 +416,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST3-5l-oRi">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boxes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bw-id-6jS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bw-id-6jS">
                                                 <rect key="frame" x="20" y="20" width="374" height="41"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="34"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -589,6 +589,7 @@
                     <connections>
                         <outlet property="modeSegment" destination="FeR-Ll-tfx" id="ADa-Hz-ink"/>
                         <outlet property="tableView" destination="0VH-Yh-dCh" id="Qh3-EX-XA6"/>
+                        <outlet property="titleLabel" destination="9Bw-id-6jS" id="u0D-tj-aTK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFA-fb-CFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
