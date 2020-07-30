@@ -6,15 +6,17 @@
 //  Copyright © 2020 Mikhail Lazarev. All rights reserved.
 //
 
+import MapKit
 import UIKit
 
 class BoxListTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var boxName: UILabel!
+    @IBOutlet var boxName: UILabel!
     
-    @IBOutlet weak var boxParams: UILabel!
+    @IBOutlet var boxParams: UILabel!
     
-    @IBOutlet weak var boxDistance: UILabel!
+    @IBOutlet var boxDistance: UILabel!
+    
+    var location: CLLocation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,15 +27,22 @@ class BoxListTableViewCell: UITableViewCell {
         boxName.text = box.name
         boxParams.text = "Opened: \(box.opened) Downloaded: \(box.downloaded)"
         boxDistance.text = "1.0 km"
+        location = box.getLocation()
     }
-
+    
+    @IBAction func onGoButtonPressed(_ sender: Any) {
+        if let location = location {
+            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: location.coordinate, addressDictionary: nil))
+            mapItem.name = boxName.text
+            mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    @IBAction func goButtonPressed(_ sender: Any) {
-    }
-    
+    @IBAction func goButtonPressed(_ sender: Any) {}
 }

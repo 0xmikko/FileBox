@@ -494,6 +494,7 @@
                                                                                     </userDefinedRuntimeAttributes>
                                                                                     <connections>
                                                                                         <action selector="goButtonPressed:" destination="itT-54-jYW" eventType="touchUpInside" id="eNS-b1-ilu"/>
+                                                                                        <action selector="onGoButtonPressed:" destination="itT-54-jYW" eventType="touchUpInside" id="rpy-t0-PM2"/>
                                                                                     </connections>
                                                                                 </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cc-46-MB9">
