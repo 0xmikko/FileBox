@@ -21,16 +21,18 @@ class BoxesListViewModel {
         boxService = BoxService()
     }
     
-    func loadData() {
-        boxService.getBoxesAround { list in
-            self.delegate?.updateBoxesData(near: list.near, top: list.top)
+    func loadData(location: CLLocation) {
+        boxService.getBoxesAround(position: location.coordinate) { list in
+            // add distance property
+            let newBoxes = list.near.map {box in
+                return box.getBoxWithDistance(location: location)
+            }
+            
+            let topBoxes = list.top.map {box in
+                           return box.getBoxWithDistance(location: location)
+                       }
+            self.delegate?.updateBoxesData(near: newBoxes, top: topBoxes)
         }
     }
     
-    func calculateDistances() {
-        let startLocation: CLLocation = CLLocation(latitude: 23.0952779, longitude: 72.5274129)
-        let endLocation: CLLocation = CLLocation(latitude: 23.0981711, longitude: 72.5294229)
-        let distance = startLocation.distance(from: endLocation)
-        print(distance)
-    }
 }

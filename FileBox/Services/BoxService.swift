@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import CoreLocation
 import Foundation
 
 class BoxService {
@@ -57,10 +58,8 @@ class BoxService {
     }
 
     // Get array of boxes around providing coordinates and top boxes also
-    func getBoxesAround(completetion: @escaping (BoxListResponse) -> Void) {
-        
-        print("GET BOXES")
-        AF.request(getFullURL(url: "/api/boxes/?lat=50&lng=50"))
+    func getBoxesAround(position: CLLocationCoordinate2D, completetion: @escaping (BoxListResponse) -> Void) {
+        AF.request(getFullURL(url: "/api/boxes/?lat=\(position.latitude)&lng=\(position.longitude)"))
             .responseDecodable(of: BoxListResponse.self) { response in
                 do {
                     print("Getting data back!", response)

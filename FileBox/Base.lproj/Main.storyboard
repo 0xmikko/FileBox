@@ -112,6 +112,7 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZLS-s9-uwe"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="ARView" destination="5XE-Ts-VQn" id="qy3-Lw-8ot"/>
                         <outlet property="filesNearby" destination="HdM-Uz-yWt" id="lj4-AH-y1d"/>

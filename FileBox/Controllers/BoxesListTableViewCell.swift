@@ -26,7 +26,7 @@ class BoxListTableViewCell: UITableViewCell {
     func updateData(_ box: Box) {
         boxName.text = box.name
         boxParams.text = "Opened: \(box.opened) Downloaded: \(box.downloaded)"
-        boxDistance.text = "1.0 km"
+        boxDistance.text = box.getHumanDistance()
         location = box.getLocation()
     }
     

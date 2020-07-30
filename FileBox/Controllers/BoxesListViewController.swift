@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 enum BoxListMode {
     case near
@@ -20,6 +21,7 @@ class BoxesListViewController: UIViewController, BoxesListViewModelDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     
     var boxesListViewModel: BoxesListViewModel?
+    var location : CLLocation?
     
     var nearBoxesList = [Box]()
     var topBoxesList = [Box]()
@@ -30,7 +32,9 @@ class BoxesListViewController: UIViewController, BoxesListViewModelDelegate {
         
         boxesListViewModel = BoxesListViewModel()
         boxesListViewModel?.delegate = self
-        boxesListViewModel?.loadData()
+        if let location = location {
+            boxesListViewModel?.loadData(location: location)
+        }
         
         tableView.dataSource = self
         tableView.separatorColor = UIColor.black

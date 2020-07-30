@@ -18,8 +18,8 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var filesNearby: UILabel!
     
-   
     var sceneLocationView = SceneLocationView()
+    var locationManager = CLLocationManager()
     var boxViewModel: BoxViewModel!
     
     var boxDetailsId: String?
@@ -37,21 +37,15 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
         
         sceneLocationView.locationNodeTouchDelegate = self
         
-        // Configure main button
-        mainButton.setTitle("Tap to place for launch", for: .disabled)
+        // Add location manager
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
         
-        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ARViewController.performChange))
+        // Add swipe gesture
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ARViewController.showBoxesList))
         gesture.direction = .left
-        self.view.addGestureRecognizer(gesture)
-
-       
-        
+        view.addGestureRecognizer(gesture)
     }
-    
-    @objc func performChange() {
-        print("GESTURE")
-               self.performSegue(withIdentifier: "goBoxesList", sender: nil)
-           }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -75,13 +69,6 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
     }
     
     // MARK: - ARSCNViewDelegate
-    
-//
-//        sceneLocationView.addLocationNodeForCurrentPosition(locationNode: annotationNode)
-//        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.coordinate ?? "Nod:")
-//        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.altitude ?? "Nod:")
-//        print("OPOPOPOP", sceneLocationView.sceneLocationManager.currentLocation?.course ?? "Nod:")
-//    }
 }
 
 // MARK: - UIDocumentPickerDelegate
@@ -117,24 +104,38 @@ extension ARViewController: LNTouchDelegate {
     // Invokes when user tap on Box
     func annotationNodeTouched(node: AnnotationNode) {
         // Do stuffs with the node instance
-        if let nodeImage = node.image {
-            // Do stuffs with the nodeImage
-            // ...
-            guard let id = node.geometry?.name else { return }
-            boxViewModel.openBox(id: id)
-        }
+        guard let id = node.geometry?.name else { return }
+        boxViewModel.openBox(id: id)
     }
     
+    // Stub for delegate
     func locationNodeTouched(node: LocationNode) {}
+}
+
+// MARK: - Location Manager
+
+extension ARViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        boxViewModel.onNewCoordinate(location: location)
+    }
 }
 
 // MARK: Router
 
 extension ARViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToBoxDetails" {
+        switch segue.identifier {
+        case "goToBoxDetails":
             let destination = segue.destination as! BoxDeailsViewController
             destination.boxId = boxDetailsId
+            
+        case "goBoxesList":
+            let destination = segue.destination as! BoxesListViewController
+            destination.location = locationManager.location
+            
+        default:
+            break
         }
     }
     
@@ -143,7 +144,7 @@ extension ARViewController {
         performSegue(withIdentifier: "goToBoxDetails", sender: self)
     }
     
-    func showBoxesList() {
-        performSegue(withIdentifier: "goToBoxDetails", sender: self)
+    @objc func showBoxesList() {
+        performSegue(withIdentifier: "goBoxesList", sender: self)
     }
 }
