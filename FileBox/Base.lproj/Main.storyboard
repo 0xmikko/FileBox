@@ -422,7 +422,7 @@
                                                 <rect key="frame" x="0.0" y="81" width="414" height="700"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="itT-54-jYW" customClass="BoxListTableViewCell" customModule="FileBox" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BoxListCell" id="itT-54-jYW" customClass="BoxListTableViewCell" customModule="FileBox" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="69.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="itT-54-jYW" id="lXZ-XP-TcC">
@@ -488,6 +488,9 @@
                                                                                             <integer key="value" value="4"/>
                                                                                         </userDefinedRuntimeAttribute>
                                                                                     </userDefinedRuntimeAttributes>
+                                                                                    <connections>
+                                                                                        <action selector="goButtonPressed:" destination="itT-54-jYW" eventType="touchUpInside" id="eNS-b1-ilu"/>
+                                                                                    </connections>
                                                                                 </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cc-46-MB9">
                                                                                     <rect key="frame" x="10" y="46.5" width="76.5" height="18"/>
@@ -527,6 +530,11 @@
                                                                 <constraint firstAttribute="bottom" secondItem="WZ4-Y3-bDU" secondAttribute="bottom" id="n31-DH-ziM"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="boxDistance" destination="1cc-46-MB9" id="chb-PF-WGh"/>
+                                                            <outlet property="boxName" destination="KCa-X5-dyi" id="In9-Id-Le8"/>
+                                                            <outlet property="boxParams" destination="LGV-ez-fk0" id="0Vb-hr-d1O"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -569,8 +577,14 @@
                             <constraint firstItem="FeR-Ll-tfx" firstAttribute="top" secondItem="Ipl-Bh-EH5" secondAttribute="top" constant="20" id="vVp-VD-DTP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ipl-Bh-EH5"/>
+                        <connections>
+                            <outlet property="boxListTableView" destination="0VH-Yh-dCh" id="9eH-Iq-pfR"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Nxf-98-uaH"/>
+                    <connections>
+                        <outlet property="boxesListTableView" destination="0VH-Yh-dCh" id="PF0-6o-H8u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFA-fb-CFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

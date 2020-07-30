@@ -10,7 +10,6 @@ import Alamofire
 import Foundation
 
 class BoxService {
-    
     // Creates box on server and return new Box
     func createBox(boxDTO: BoxCreateDTO, url: URL, completion: @escaping (Box) -> Void) {
         do {
@@ -40,7 +39,7 @@ class BoxService {
             return
         }
     }
-    
+
     // Get box details
     func getBox(id: String, completetion: @escaping (Box) -> Void) {
         AF.request(getFullURL(url: "/api/boxes/\(id)/"))
@@ -56,9 +55,19 @@ class BoxService {
                 }
             }
     }
-    
-    // Get array of boxes around providing coordinates
-    func getBoxesAround() {
-        
+
+    // Get array of boxes around providing coordinates and top boxes also
+    func getBoxesAround(completetion: @escaping (BoxListResponse) -> Void) {
+        AF.request(getFullURL(url: "/api/boxes/?lat=50&lng=50"))
+            .responseDecodable(of: BoxListResponse.self) { response in
+                do {
+                    print("Getting data back!", response)
+                    let newBoxesListResponse = try response.result.get()
+                    completetion(newBoxesListResponse)
+
+                } catch {
+                    print("Error, cant get ID")
+                }
+            }
     }
 }

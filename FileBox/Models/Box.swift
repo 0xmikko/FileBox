@@ -19,10 +19,17 @@ struct Box : Encodable, Decodable {
     var content: String
     var opened: Int
     var downloaded : Int
-        
+    
+
+    // Return CLLLocation object based on Box parameters
     func getLocation() -> CLLocation {
         let loc2 = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         return CLLocation(coordinate: loc2, altitude: altitude)
         
+    }
+    
+    // Calculates distance in km based on Box data and location parameter
+    func getDistance(location: CLLocation) -> Double {
+        return 0.0
     }
 }
