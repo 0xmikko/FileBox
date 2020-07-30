@@ -43,7 +43,7 @@ class BoxService {
 
     // Get box details
     func getBox(id: String, completetion: @escaping (Box) -> Void) {
-        AF.request(getFullURL(url: "/api/boxes/\(id)/"))
+        AF.request(getFullURL(url: "/api/boxes/i/\(id)/"))
 
             .responseDecodable(of: Box.self) { response in
                 do {
@@ -53,6 +53,17 @@ class BoxService {
 
                 } catch {
                     print("Error, cant get ID")
+                }
+            }
+    }
+
+    func downloadFromBox(id: String, completion: @escaping (URL?) -> Void) {
+        AF.download(getFullURL(url: "/api/boxes/d/\(id)/"))
+            .responseData { response in
+                if let data = response.value {
+                    print("Downloaded", data)
+
+                    completion(response.fileURL)
                 }
             }
     }

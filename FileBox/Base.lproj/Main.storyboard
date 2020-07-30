@@ -297,6 +297,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onDownload:" destination="yty-Pq-Lc8" eventType="touchUpInside" id="pBn-fX-mF6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

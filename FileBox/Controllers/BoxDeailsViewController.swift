@@ -36,6 +36,22 @@ class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate {
         }
     }
     
+    @IBAction func onDownload(_ sender: Any) {
+        if let id = boxId {
+            boxDetailsViewModel?.downloadFile(id: id)
+        }
+    }
+    
+    func saveFile(_ url: URL) {
+        // Set the default sharing message.
+        //        var url = URL("jjj")
+        let documentInteractionController = UIDocumentInteractionController()
+        documentInteractionController.url = url
+        documentInteractionController.uti = url.uti
+        documentInteractionController.presentOpenInMenu(from: view.frame, in: view, animated: true)
+//        presentOptionsMenu(from: self, animated: true)
+    }
+    
     func updateName(_ name: String) {
         nameLabel.text = name
     }
@@ -66,5 +82,11 @@ extension BoxDeailsViewController: UITableViewDataSource {
             cell.value.text = prefs[indexPath.row].value
         }
         return cell
+    }
+}
+
+extension URL {
+    var uti: String {
+        return (try? resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier ?? "public.data"
     }
 }
