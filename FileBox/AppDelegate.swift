@@ -18,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         loadConfig()
         
+      
+        let  userIsNotLoggedIn = true
+        
+        if userIsNotLoggedIn {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let loginController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController") 
+            window?.rootViewController = loginController
+        }
+        
         return true
     }
 

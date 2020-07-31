@@ -45,6 +45,11 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
         let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ARViewController.showBoxesList))
         gesture.direction = .left
         view.addGestureRecognizer(gesture)
+    
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override func viewDidLayoutSubviews() {

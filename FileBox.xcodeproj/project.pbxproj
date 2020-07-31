@@ -25,6 +25,11 @@
 		746B666A24D2D1960097DE3B /* BoxesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B666924D2D1960097DE3B /* BoxesListViewModel.swift */; };
 		746B666C24D2DD3F0097DE3B /* BoxListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B666B24D2DD3F0097DE3B /* BoxListResponse.swift */; };
 		746B666E24D303190097DE3B /* SwipeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B666D24D303190097DE3B /* SwipeNavigationViewController.swift */; };
+		746B667124D4420C0097DE3B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B667024D4420C0097DE3B /* LoginViewController.swift */; };
+		746B667324D44CFC0097DE3B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746B667224D44CFC0097DE3B /* Login.storyboard */; };
+		746B667524D4511A0097DE3B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B667424D4511A0097DE3B /* AuthService.swift */; };
+		746B667724D4513C0097DE3B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B667624D4513C0097DE3B /* Profile.swift */; };
+		746B667924D452050097DE3B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B667824D452050097DE3B /* Auth.swift */; };
 		746C8F1E24D1915700482DBF /* BoxCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */; };
 		746C8F2024D1B01800482DBF /* BoxDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */; };
 		746C8F2224D204C900482DBF /* BoxDetailsPrefCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C8F2124D204C900482DBF /* BoxDetailsPrefCellView.swift */; };
@@ -58,7 +63,7 @@
 		53F4A374D1CE598A4460E745 /* Pods-FileBoxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBoxTests.debug.xcconfig"; path = "Target Support Files/Pods-FileBoxTests/Pods-FileBoxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DA46DD880895F587427BDF8 /* Pods-FileBoxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBoxTests.release.xcconfig"; path = "Target Support Files/Pods-FileBoxTests/Pods-FileBoxTests.release.xcconfig"; sourceTree = "<group>"; };
 		70BB42C75605AD121EDED82D /* Pods-FileBox-FileBoxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBox-FileBoxUITests.release.xcconfig"; path = "Target Support Files/Pods-FileBox-FileBoxUITests/Pods-FileBox-FileBoxUITests.release.xcconfig"; sourceTree = "<group>"; };
-		743FCF0424BE168B00705E13 /* FileBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		743FCF0424BE168B00705E13 /* Box & Drop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Box & Drop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		743FCF0724BE168B00705E13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		743FCF0924BE168B00705E13 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		743FCF0B24BE168B00705E13 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +84,12 @@
 		746B666924D2D1960097DE3B /* BoxesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxesListViewModel.swift; sourceTree = "<group>"; };
 		746B666B24D2DD3F0097DE3B /* BoxListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListResponse.swift; sourceTree = "<group>"; };
 		746B666D24D303190097DE3B /* SwipeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeNavigationViewController.swift; sourceTree = "<group>"; };
+		746B666F24D440490097DE3B /* Box & Drop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Box & Drop.entitlements"; sourceTree = "<group>"; };
+		746B667024D4420C0097DE3B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		746B667224D44CFC0097DE3B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		746B667424D4511A0097DE3B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		746B667624D4513C0097DE3B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		746B667824D452050097DE3B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		746C8F1D24D1915700482DBF /* BoxCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCreateRequest.swift; sourceTree = "<group>"; };
 		746C8F1F24D1B01800482DBF /* BoxDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailsViewModel.swift; sourceTree = "<group>"; };
 		746C8F2124D204C900482DBF /* BoxDetailsPrefCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailsPrefCellView.swift; sourceTree = "<group>"; };
@@ -147,7 +158,7 @@
 		743FCF0524BE168B00705E13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				743FCF0424BE168B00705E13 /* FileBox.app */,
+				743FCF0424BE168B00705E13 /* Box & Drop.app */,
 				743FCF1A24BE168C00705E13 /* FileBoxTests.xctest */,
 				743FCF2524BE168C00705E13 /* FileBoxUITests.xctest */,
 			);
@@ -157,6 +168,7 @@
 		743FCF0624BE168B00705E13 /* FileBox */ = {
 			isa = PBXGroup;
 			children = (
+				746B666F24D440490097DE3B /* Box & Drop.entitlements */,
 				743FCF0724BE168B00705E13 /* AppDelegate.swift */,
 				746597BF24D0A06400FAE7FA /* Configuration.swift */,
 				7496E4FD24D02B5300DFFE28 /* Controllers */,
@@ -166,6 +178,7 @@
 				74A6A63424D038760019947B /* Payloads */,
 				743FCF0924BE168B00705E13 /* art.scnassets */,
 				743FCF0D24BE168B00705E13 /* Main.storyboard */,
+				746B667224D44CFC0097DE3B /* Login.storyboard */,
 				743FCF1024BE168C00705E13 /* Assets.xcassets */,
 				743FCF1224BE168C00705E13 /* LaunchScreen.storyboard */,
 				74AC2A4924D0BC4100D1B203 /* Config.plist */,
@@ -195,7 +208,9 @@
 		7496E4FC24D02B4700DFFE28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				746B667824D452050097DE3B /* Auth.swift */,
 				7496E50024D02BAE00DFFE28 /* Box.swift */,
+				746B667624D4513C0097DE3B /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +224,7 @@
 				746B666524D2D04F0097DE3B /* BoxesListTableViewCell.swift */,
 				746B666724D2D0930097DE3B /* BoxesListViewController.swift */,
 				746B666D24D303190097DE3B /* SwipeNavigationViewController.swift */,
+				746B667024D4420C0097DE3B /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +242,7 @@
 		7496E4FF24D02B7000DFFE28 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				746B667424D4511A0097DE3B /* AuthService.swift */,
 				7496E50224D02C4F00DFFE28 /* BoxService.swift */,
 			);
 			path = Services;
@@ -280,7 +297,7 @@
 			);
 			name = FileBox;
 			productName = FileBox;
-			productReference = 743FCF0424BE168B00705E13 /* FileBox.app */;
+			productReference = 743FCF0424BE168B00705E13 /* Box & Drop.app */;
 			productType = "com.apple.product-type.application";
 		};
 		743FCF1924BE168C00705E13 /* FileBoxTests */ = {
@@ -374,6 +391,7 @@
 				743FCF1424BE168C00705E13 /* LaunchScreen.storyboard in Resources */,
 				74AC2A5024D174BD00D1B203 /* BradBunR.ttf in Resources */,
 				743FCF1124BE168C00705E13 /* Assets.xcassets in Resources */,
+				746B667324D44CFC0097DE3B /* Login.storyboard in Resources */,
 				74AC2A4A24D0BC4100D1B203 /* Config.plist in Resources */,
 				743FCF0F24BE168B00705E13 /* Main.storyboard in Resources */,
 			);
@@ -508,13 +526,17 @@
 				746C8F2024D1B01800482DBF /* BoxDetailsViewModel.swift in Sources */,
 				746597C224D0B09C00FAE7FA /* BoxViewModel.swift in Sources */,
 				7496E50324D02C4F00DFFE28 /* BoxService.swift in Sources */,
+				746B667924D452050097DE3B /* Auth.swift in Sources */,
 				746C8F2224D204C900482DBF /* BoxDetailsPrefCellView.swift in Sources */,
+				746B667524D4511A0097DE3B /* AuthService.swift in Sources */,
 				746C8F1E24D1915700482DBF /* BoxCreateRequest.swift in Sources */,
 				746B666624D2D04F0097DE3B /* BoxesListTableViewCell.swift in Sources */,
 				743FCF0C24BE168B00705E13 /* ARViewController.swift in Sources */,
 				7496E50124D02BAE00DFFE28 /* Box.swift in Sources */,
 				743FCF0824BE168B00705E13 /* AppDelegate.swift in Sources */,
 				746B666E24D303190097DE3B /* SwipeNavigationViewController.swift in Sources */,
+				746B667124D4420C0097DE3B /* LoginViewController.swift in Sources */,
+				746B667724D4513C0097DE3B /* Profile.swift in Sources */,
 				746597C024D0A06400FAE7FA /* Configuration.swift in Sources */,
 				746B666C24D2DD3F0097DE3B /* BoxListResponse.swift in Sources */,
 				7496E4FB24D028FE00DFFE28 /* BoxDeailsViewController.swift in Sources */,
@@ -691,16 +713,17 @@
 			baseConfigurationReference = 07F00B489F468931543EBA4B /* Pods-FileBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "FileBox/Box & Drop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QJLCQDHMR4;
 				INFOPLIST_FILE = FileBox/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dtexperts.FileBox;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtexperts.filebox;
+				PRODUCT_NAME = "Box & Drop";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -711,16 +734,17 @@
 			baseConfigurationReference = AA7BD70D164952B59570E761 /* Pods-FileBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "FileBox/Box & Drop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QJLCQDHMR4;
 				INFOPLIST_FILE = FileBox/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dtexperts.FileBox;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtexperts.filebox;
+				PRODUCT_NAME = "Box & Drop";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
