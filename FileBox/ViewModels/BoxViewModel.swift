@@ -72,6 +72,7 @@ class BoxViewModel {
     }
     
     func onNewCoordinate(location: CLLocation) {
+        print("LAST LOCATION", lastUpdateLocation)
         if lastUpdateLocation == nil || lastUpdateLocation?.distance(from: location) ?? 1001.0 > 1000.0 {
             print("Requested new boxes")
             updateLocationFromServer(location.coordinate)

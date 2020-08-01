@@ -33,9 +33,27 @@ class ARViewController: UIViewController, BoxViewModelDelegate {
         
         // Set the view's delegate
         sceneLocationView.run()
+        
         ARView.addSubview(sceneLocationView)
+
         
         sceneLocationView.locationNodeTouchDelegate = self
+        
+        if !hasLocationPermission() {
+            let alertController = UIAlertController(title: "Location Permission Required", message: "Please enable location permissions in settings.", preferredStyle: UIAlertController.Style.alert)
+
+                let okAction = UIAlertAction(title: "Settings", style: .default, handler: {(cAlertAction) in
+                    //Redirect to Settings app
+                    UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
+                })
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+                alertController.addAction(cancelAction)
+
+                alertController.addAction(okAction)
+
+                self.present(alertController, animated: true, completion: nil)
+            }
         
         // Add location manager
         locationManager.delegate = self
@@ -122,7 +140,24 @@ extension ARViewController: LNTouchDelegate {
 extension ARViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
+        print(location)
         boxViewModel.onNewCoordinate(location: location)
+    }
+    
+    func hasLocationPermission() -> Bool {
+        var hasPermission = false
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                hasPermission = false
+            case .authorizedAlways, .authorizedWhenInUse:
+                hasPermission = true
+            }
+        } else {
+            hasPermission = false
+        }
+
+        return hasPermission
     }
 }
 

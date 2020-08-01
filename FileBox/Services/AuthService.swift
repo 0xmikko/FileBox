@@ -25,6 +25,21 @@ class AuthService {
         refreshToken = getTokenFromKeyChain()
     }
     
+    func withHeader(completion: @escaping (String) -> Void) {
+        if isAccessTokenValid() {
+            if let accessToken = accessToken {
+                completion("Bearer \(accessToken)")
+            }
+            return
+        }
+        
+        refreshTokenPair {
+            if let accessToken = self.accessToken {
+                completion("Bearer \(accessToken)")
+            }
+        }
+    }
+    
     func isAccessTokenValid() -> Bool {
         return isTokenValid(token: accessToken)
     }
@@ -75,7 +90,6 @@ class AuthService {
             
             .responseDecodable(of: TokenPair.self) { response in
                 do {
-                    print("Getting data back!", response)
                     let tokenPair = try response.result.get()
                     self.updateTokenPair(tokenPair)
                     if self.isSignIn {
@@ -90,7 +104,7 @@ class AuthService {
             }
     }
     
-    func refreshTokenPair() {
+    func refreshTokenPair(completion: @escaping () -> Void) {
         guard let token = refreshToken else { return }
         let parameters: [String: String] = [
             "refresh": token,
@@ -109,6 +123,8 @@ class AuthService {
                     if !self.isSignIn {
                         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                         appDelegate.switchToLoginSB()
+                    } else {
+                        completion()
                     }
                 } catch {
                     print("Network error \(error)")

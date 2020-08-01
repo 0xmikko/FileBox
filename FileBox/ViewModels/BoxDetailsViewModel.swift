@@ -35,7 +35,12 @@ class BoxDetailsViewModel {
 
             var newPrefs: [BoxPref] = []
 
-            newPrefs.append(BoxPref(title: "Created", value: String(box.createdAt)))
+            let date = Date(timeIntervalSince1970: TimeInterval(box.createdAt))
+
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "dd.MM.yyyy"
+
+            newPrefs.append(BoxPref(title: "Created", value: String(dateFormatterGet.string(from: date))))
             newPrefs.append(BoxPref(title: "Opened", value: String(box.opened)))
             newPrefs.append(BoxPref(title: "Downloaded", value: String(box.downloaded)))
 

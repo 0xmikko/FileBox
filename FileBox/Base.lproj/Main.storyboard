@@ -15,7 +15,7 @@
         <!--AR ViewController-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" userLabel="AR ViewController" customClass="ARViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" userLabel="AR ViewController" customClass="ARViewController" customModule="Box___Drop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,7 +43,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzq-N9-BPC" userLabel="BottomBarView">
                                 <rect key="frame" x="0.0" y="776" width="414" height="120"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="18" translatesAutoresizingMaskIntoConstraints="NO" id="qRD-4K-vyx">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackgound" translatesAutoresizingMaskIntoConstraints="NO" id="qRD-4K-vyx">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3pf-7L-czv">
@@ -129,7 +129,7 @@
         <!--Box Deails View Controller-->
         <scene sceneID="QmB-Oy-cJT">
             <objects>
-                <viewController id="yty-Pq-Lc8" customClass="BoxDeailsViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yty-Pq-Lc8" customClass="BoxDeailsViewController" customModule="Box___Drop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8rn-2c-5gw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +237,7 @@
                                         </constraints>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BoxPref" id="mf6-A6-Cqd" customClass="PrefCellView" customModule="FileBox" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BoxPref" id="mf6-A6-Cqd" customClass="PrefCellView" customModule="Box___Drop" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mf6-A6-Cqd" id="gxU-bs-kyF">
@@ -386,7 +386,7 @@
         <!--BoxesList Controller-->
         <scene sceneID="G5h-H8-usN">
             <objects>
-                <viewController title="Top Boxes Controller" id="TX2-CX-2CL" userLabel="BoxesList Controller" customClass="BoxesListViewController" customModule="FileBox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Top Boxes Controller" id="TX2-CX-2CL" userLabel="BoxesList Controller" customClass="BoxesListViewController" customModule="Box___Drop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eqR-yg-GAJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -420,7 +420,7 @@
                                                 <rect key="frame" x="0.0" y="81" width="414" height="690"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BoxListCell" id="itT-54-jYW" customClass="BoxListTableViewCell" customModule="FileBox" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BoxListCell" id="itT-54-jYW" customClass="BoxListTableViewCell" customModule="Box___Drop" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="414" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="itT-54-jYW" id="lXZ-XP-TcC">
@@ -594,8 +594,8 @@
     <resources>
         <image name="10" width="2500" height="1666.5"/>
         <image name="14" width="256" height="256"/>
-        <image name="18" width="2500" height="1666.5"/>
         <image name="7" width="256" height="256"/>
+        <image name="LoginBackgound" width="1024" height="1366"/>
         <image name="orange_box" width="256" height="256"/>
     </resources>
 </document>
