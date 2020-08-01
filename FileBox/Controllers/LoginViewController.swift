@@ -9,6 +9,7 @@
 import AuthenticationServices
 import UIKit
 import SwiftJWT
+import KeychainAccess
 
 class LoginViewController: UIViewController {
     override func viewDidLoad() {
@@ -100,7 +101,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let name = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
             
             let authService = AuthService.auth
-            authService.loginWithCode(code: code ?? "", name: name) 
+            authService.loginWithCode(code: code ?? "", name: name)
+            
+            // save user Id for checking Apple Authstate at startup
+            let keychain = Keychain(service: "com.dtexperts.filebox")
+            keychain["userId"] = appleIDCredential.user
         }
     }
 }

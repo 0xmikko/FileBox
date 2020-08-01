@@ -6,6 +6,8 @@
 //  Copyright © 2020 Mikhail Lazarev. All rights reserved.
 //
 
+import AuthenticationServices
+import KeychainAccess
 import UIKit
 
 @UIApplicationMain
@@ -16,12 +18,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         loadConfig()
 
-        let authService = AuthService.auth
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
 
-        if authService.isSignIn {
-            swithToMainSB()
-        } else {
-            switchToLoginSB()
+        let keychain = Keychain(service: "com.dtexperts.filebox")
+        let userId = try? keychain.getString("userId")
+
+        print("UID", userId)
+
+        if let userId = userId {
+            appleIDProvider.getCredentialState(forUserID: userId) { credentialState, _ in
+                switch credentialState {
+                case .authorized:
+                    let authService = AuthService.auth
+
+                    if authService.isSignIn {
+                        DispatchQueue.main.async {
+                            self.swithToMainSB()
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.switchToLoginSB()
+                        }
+                    }
+                // The Apple ID credential is valid.
+                case .revoked, .notFound:
+                    // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+                    DispatchQueue.main.async {
+                        self.switchToLoginSB()
+                    }
+                default:
+                    break
+                }
+            }
         }
 
         return true
@@ -49,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loginController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
         window?.rootViewController = loginController
     }
-    
+
     func swithToMainSB() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainController = storyboard.instantiateViewController(withIdentifier: "MainNavController") as! UINavigationController
