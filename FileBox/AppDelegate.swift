@@ -10,23 +10,20 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         loadConfig()
-        
-      
-        let  userIsNotLoggedIn = true
-        
-        if userIsNotLoggedIn {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let loginController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController") 
-            window?.rootViewController = loginController
+
+        let authService = AuthService.auth
+
+        if authService.isSignIn {
+            swithToMainSB()
+        } else {
+            switchToLoginSB()
         }
-        
+
         return true
     }
 
@@ -47,6 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
+    func switchToLoginSB() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
+        window?.rootViewController = loginController
+    }
+    
+    func swithToMainSB() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainController = storyboard.instantiateViewController(withIdentifier: "MainNavController") as! UINavigationController
 
+        window?.rootViewController = mainController
+    }
 }
-

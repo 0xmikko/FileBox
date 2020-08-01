@@ -13,6 +13,7 @@ struct Box: Encodable, Decodable {
     var id: String
     var name: String
     var location: [Double]
+    var createdAt: Int64
     var altitude: Double
     var ipfsHash: String?
     var content: String

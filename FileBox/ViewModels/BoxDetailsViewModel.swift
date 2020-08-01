@@ -35,7 +35,7 @@ class BoxDetailsViewModel {
 
             var newPrefs: [BoxPref] = []
 
-            newPrefs.append(BoxPref(title: "Created", value: "29.07.2020"))
+            newPrefs.append(BoxPref(title: "Created", value: String(box.createdAt)))
             newPrefs.append(BoxPref(title: "Opened", value: String(box.opened)))
             newPrefs.append(BoxPref(title: "Downloaded", value: String(box.downloaded)))
 

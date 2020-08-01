@@ -8,6 +8,7 @@
 
 import AuthenticationServices
 import UIKit
+import SwiftJWT
 
 class LoginViewController: UIViewController {
     override func viewDidLoad() {
@@ -98,13 +99,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             
             let name = "\(appleIDCredential.fullName?.givenName ?? "") \(appleIDCredential.fullName?.familyName ?? "")"
             
-            let authService = AuthService()
-            authService.loginWithCode(code: code ?? "", name: name) { _ in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainController = storyboard.instantiateViewController(withIdentifier: "MainNavController") as! UINavigationController
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController = mainController
-            }
+            let authService = AuthService.auth
+            authService.loginWithCode(code: code ?? "", name: name) 
         }
     }
 }

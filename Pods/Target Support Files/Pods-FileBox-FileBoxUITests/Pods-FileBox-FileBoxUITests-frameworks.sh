@@ -163,12 +163,28 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BlueRSA/CryptorRSA.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/KituraContracts/KituraContracts.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/LoggerAPI/LoggerAPI.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Logging/Logging.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftJWT/SwiftJWT.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BlueRSA/CryptorRSA.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/KituraContracts/KituraContracts.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/LoggerAPI/LoggerAPI.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Logging/Logging.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftJWT/SwiftJWT.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
