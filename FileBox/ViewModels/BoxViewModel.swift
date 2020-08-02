@@ -61,7 +61,6 @@ class BoxViewModel {
             let nearBoxes = boxes.near
             nearBoxes.forEach { box in
                 if self.boxes[box.id] == nil {
-                    print("Ading box from server")
                     self.delegate?.addBox(id: box.id, location: box.getLocation())
                 }
                 self.boxes[box.id] = box
@@ -72,7 +71,7 @@ class BoxViewModel {
     }
     
     func onNewCoordinate(location: CLLocation) {
-        print("LAST LOCATION", lastUpdateLocation)
+        
         if lastUpdateLocation == nil || lastUpdateLocation?.distance(from: location) ?? 1001.0 > 1000.0 {
             print("Requested new boxes")
             updateLocationFromServer(location.coordinate)

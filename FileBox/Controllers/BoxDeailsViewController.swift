@@ -13,7 +13,7 @@ struct BoxPref {
     var value: String
 }
 
-class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate {
+class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate, UIDocumentInteractionControllerDelegate {
     var boxDetailsViewModel: BoxDetailsViewModel?
     var boxId: String?
     var prefs = [BoxPref]()
@@ -40,16 +40,28 @@ class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate {
         if let id = boxId {
             boxDetailsViewModel?.downloadFile(id: id)
         }
+//        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//        let fileURL = documentDirectory.appendingPathComponent("test.jpg")
+//        
+//        let image = #imageLiteral(resourceName: "ipfs logo")
+//        if let imageData = image.jpegData(compressionQuality: 0.5) {
+//            do {
+//                try imageData.write(to: fileURL)
+//                DispatchQueue.main.async {
+//                    self.openFileIn(fileURL)
+//                }
+//            } catch {
+//                print("\(error)")
+//            }
+//        }
     }
     
-    func saveFile(_ url: URL) {
-        // Set the default sharing message.
-        //        var url = URL("jjj")
+    func openFileIn(_ url: URL) {
         let documentInteractionController = UIDocumentInteractionController()
+        documentInteractionController.delegate = self
         documentInteractionController.url = url
         documentInteractionController.uti = url.uti
-        documentInteractionController.presentOpenInMenu(from: view.frame, in: view, animated: true)
-//        presentOptionsMenu(from: self, animated: true)
+        documentInteractionController.presentPreview(animated: true)
     }
     
     func updateName(_ name: String) {
@@ -68,6 +80,12 @@ class BoxDeailsViewController: UIViewController, BoxDetailsViewModelDelegate {
         prefs = newPrefs
         infoTable.reloadData()
     }
+    
+    public func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+
+    
 }
 
 extension BoxDeailsViewController: UITableViewDataSource {

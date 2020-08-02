@@ -13,7 +13,7 @@ protocol BoxDetailsViewModelDelegate {
     func updateContent(_ content: String)
     func updateIPFSHash(_ hash: String)
     func updatePrefs(_ newPrefs: [BoxPref])
-    func saveFile(_ url: URL)
+    func openFileIn(_ url: URL)
 }
 
 class BoxDetailsViewModel {
@@ -51,7 +51,7 @@ class BoxDetailsViewModel {
     func downloadFile(id: String) {
         boxService.downloadFromBox(id: id) { url in
             if let url = url {
-                self.delegate?.saveFile(url)
+                self.delegate?.openFileIn(url)
             }
         }
     }

@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let keychain = Keychain(service: "com.dtexperts.filebox")
         let userId = try? keychain.getString("userId")
 
-        print("UID", userId)
-
         if let userId = userId {
             appleIDProvider.getCredentialState(forUserID: userId) { credentialState, _ in
                 switch credentialState {
@@ -32,24 +30,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let authService = AuthService.auth
 
                     if authService.isSignIn {
-                        DispatchQueue.main.async {
-                            self.swithToMainSB()
-                        }
+                        self.swithToMainSB()
+
                     } else {
-                        DispatchQueue.main.async {
-                            self.switchToLoginSB()
-                        }
+                        self.switchToLoginSB()
                     }
                 // The Apple ID credential is valid.
                 case .revoked, .notFound:
                     // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
-                    DispatchQueue.main.async {
-                        self.switchToLoginSB()
-                    }
+
+                    self.switchToLoginSB()
+
                 default:
                     break
                 }
             }
+        } else {
+            self.switchToLoginSB()
         }
 
         return true
@@ -73,15 +70,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func switchToLoginSB() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let loginController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
-        window?.rootViewController = loginController
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let loginController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
+            self.window?.rootViewController = loginController
+        }
     }
 
     func swithToMainSB() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainController = storyboard.instantiateViewController(withIdentifier: "MainNavController") as! UINavigationController
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainController = storyboard.instantiateViewController(withIdentifier: "MainNavController") as! UINavigationController
 
-        window?.rootViewController = mainController
+            self.window?.rootViewController = mainController
+        }
     }
 }

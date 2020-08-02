@@ -70,8 +70,18 @@ class BoxService {
                 .responseData { response in
                     if let data = response.value {
                         print("Downloaded", data)
+                        print(response.fileURL?.lastPathComponent)
 
-                        completion(response.fileURL)
+                        let fileManager = FileManager.default
+                        do {
+                            let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                            let fileURL = documentDirectory.appendingPathComponent("test.pdf")
+                            try data.write(to: fileURL)
+
+                            completion(fileURL)
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
         }
