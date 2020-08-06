@@ -8,6 +8,7 @@ https://github.com/MikaelLazarev/FileBox - Mobile Application
 
 https://github.com/MikaelLazarev/filebox-server - Backend
 
+This project was developed from scraptch especially for HackFS
 
 ## Idea
 With Box & Drop, you can drop a file to a specific location, just like any physical object. You can also take other boxes, open them and download the files inside. Box & Drop combines two trend technologies: IPFS and augmented reality, deliverting new customer experience.
